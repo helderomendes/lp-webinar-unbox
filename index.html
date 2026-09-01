@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="theme-color" content="#05070F">
+
+<title>Hipercustomização de E-commerce com IA | Webinar Revi × Unbox</title>
+<meta name="description" content="Webinar gratuito e ao vivo em 8 de setembro, às 19h. Veja a IA da Unbox criar uma loja do zero, cases reais de antes e depois, sorteio de uma reformulação completa de e-commerce e desconto exclusivo.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hipercustomização de E-commerce com IA | Webinar Revi × Unbox">
+<meta property="og:description" content="8 de setembro, 19h. A IA criando uma loja ao vivo, cases de antes e depois, sorteio de uma mudança total de e-commerce e desconto exclusivo para participantes.">
+<meta property="og:image" content="assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hipercustomização de E-commerce com IA | Webinar Revi × Unbox">
+<meta name="twitter:description" content="8 de setembro, 19h. Ao vivo e gratuito.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2325F58A'/%3E%3Cstop offset='1' stop-color='%23A855F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 4C56 28 72 44 96 50 72 56 56 72 50 96 44 72 28 56 4 50 28 44 44 28 50 4Z' fill='url(%23g)'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+
+<style>
+/* =========================================================================
+   LP WEBINAR — "Hipercustomização de E-commerce e Jornada de Compra com IA"
+   Revi x Unbox · identidade híbrida: base dark navy (Revi) + neon
+   verde->azul->roxo (Unbox). Estrutura de seções inspirada em LP de webinar
+   RD Station (header sticky, hero com formulário, conteúdo, palestrante,
+   FAQ, CTA final).
+
+   ÍNDICE
+   1.  Tokens e reset
+   2.  Utilitários de layout
+   3.  Fundo (grid + orbs neon)
+   4.  Botões
+   5.  Header sticky
+   6.  Hero + formulário
+   7.  Faixa de destaques
+   8.  Blocos de conteúdo (cards, cases, palestrante, público)
+   9.  Sorteio / bônus
+   10. FAQ
+   11. CTA final e rodapé
+   12. Animações e acessibilidade
+   ========================================================================= */
+
+/* ============ 1. TOKENS E RESET ============ */
+:root{
+  --bg:#05070F;
+  --bg-alt:#080B1A;
+  --surface:#0B1130;
+  --surface-2:#0E1740;
+  --line:rgba(255,255,255,.10);
+  --line-strong:rgba(255,255,255,.18);
+
+  --blue:#2F6BFF;
+  --blue-soft:#8FB2FF;
+  --green:#25F58A;
+  --purple:#A855F7;
+  --magenta:#E255F7;
+
+  --text:#EDF2FF;
+  --muted:rgba(237,242,255,.66);
+  --muted-2:rgba(237,242,255,.46);
+
+  --neon:linear-gradient(105deg,#25F58A 0%,#35C6FF 38%,#4B7BFF 62%,#A855F7 100%);
+  --radius:20px;
+  --radius-lg:28px;
+  --shadow:0 30px 70px -35px rgba(0,0,0,.9);
+  --maxw:1140px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Inter","Helvetica Neue",Arial,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;border:0}
+a{color:inherit}
+h1,h2,h3,h4,h5{font-family:"Space Grotesk","Inter",sans-serif;line-height:1.1;margin:0;letter-spacing:-.02em}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+
+h1{font-size:clamp(34px,5.1vw,58px);font-weight:700}
+h2{font-size:clamp(28px,3.7vw,44px);font-weight:700}
+h3{font-size:clamp(22px,2.4vw,30px);font-weight:600}
+h4{font-size:20px;font-weight:600}
+
+.grad{
+  background:var(--neon);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+}
+
+/* ============ 2. UTILITÁRIOS DE LAYOUT ============ */
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:22px}
+.section{position:relative;padding:clamp(64px,8vw,104px) 0}
+[id]{scroll-margin-top:90px}
+.section--alt{background:var(--bg-alt)}
+.center{text-align:center}
+.lead{color:var(--muted);font-size:clamp(16px,1.7vw,19px)}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--green);
+  padding:7px 14px;border-radius:999px;
+  border:1px solid rgba(37,245,138,.28);
+  background:rgba(37,245,138,.07);
+}
+.eyebrow--blue{color:var(--blue-soft);border-color:rgba(47,107,255,.35);background:rgba(47,107,255,.10)}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 10px currentColor}
+
+.grid{display:grid;gap:20px}
+@media(min-width:820px){
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+}
+
+.card{
+  background:linear-gradient(160deg,var(--surface),#070C22);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+}
+
+/* ============ 3. FUNDO (GRID + ORBS NEON) ============ */
+.bg-fx{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bg-fx .grid-lines{
+  position:absolute;inset:-20% -10%;
+  background-image:
+    linear-gradient(rgba(120,160,255,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(120,160,255,.055) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 20%,#000 25%,transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 20%,#000 25%,transparent 78%);
+}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5}
+.orb--green{width:520px;height:520px;background:rgba(37,245,138,.20);top:-160px;left:-140px}
+.orb--blue{width:640px;height:640px;background:rgba(47,107,255,.28);top:-120px;right:-200px}
+.orb--purple{width:560px;height:560px;background:rgba(168,85,247,.18);bottom:-220px;left:-200px}
+main,header,footer{position:relative;z-index:1}
+
+/* ============ 4. BOTÕES ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:"Space Grotesk",sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.04em;
+  text-decoration:none;cursor:pointer;
+  border:0;border-radius:14px;
+  padding:17px 28px;
+  transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+}
+.btn--primary{
+  background:var(--neon);
+  color:#04060E;
+  font-size:16px;
+  box-shadow:0 14px 40px -14px rgba(47,107,255,.85),0 0 0 1px rgba(255,255,255,.10) inset;
+}
+.btn--primary:hover{transform:translateY(-2px) scale(1.015);filter:brightness(1.08)}
+.btn--ghost{
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  border:1px solid var(--line-strong);
+  font-size:14px;padding:13px 22px;
+}
+.btn--ghost:hover{background:rgba(255,255,255,.10)}
+.btn--block{width:100%}
+.btn--sm{padding:12px 20px;font-size:13px;border-radius:12px}
+.btn:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+
+.btn-note{
+  display:block;margin-top:12px;font-size:13px;color:var(--muted-2);text-align:center;
+}
+
+/* ============ 5. HEADER STICKY ============ */
+.site-header{
+  position:sticky;top:0;z-index:60;
+  background:rgba(5,7,15,.72);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:70px}
+.header-right{display:flex;align-items:center;gap:18px}
+.header-date{
+  font-family:"Space Grotesk",sans-serif;font-size:13px;font-weight:600;
+  color:var(--muted);letter-spacing:.06em;text-transform:uppercase;
+}
+.header-date b{color:var(--text)}
+@media(max-width:900px){.header-date{display:none}}
+/* No mobile o header fica só com os logos: a conversão vira a barra fixa inferior */
+@media(max-width:900px){
+  .site-header .wrap{min-height:58px}
+  .header-right .btn{display:none}
+}
+
+/* Lockup dos logos */
+.lockup{display:flex;align-items:center;gap:14px}
+.lockup .x{color:var(--muted-2);font-size:15px;font-weight:300}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.logo-mark{width:26px;height:26px;flex:none}
+.logo-word{
+  font-family:"Space Grotesk",sans-serif;font-weight:600;
+  font-size:20px;letter-spacing:-.01em;color:#fff;
+}
+.logo--revi .logo-word{letter-spacing:.01em}
+.logo--unbox .logo-word{font-weight:400;letter-spacing:.06em}
+@media(max-width:400px){.lockup .logo-word{font-size:17px}}
+
+/* ============ 6. HERO + FORMULÁRIO ============ */
+.hero{padding:clamp(44px,6vw,76px) 0 clamp(56px,7vw,88px)}
+.hero-grid{display:grid;gap:38px;align-items:start}
+@media(min-width:980px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:48px}}
+
+.hero h1{margin:22px 0 18px}
+.hero .lead{max-width:560px}
+.hero-when{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;
+}
+.chip{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:10px 15px;border-radius:12px;
+  background:rgba(255,255,255,.045);
+  border:1px solid var(--line);
+  font-size:14px;font-weight:500;color:var(--text);
+}
+.chip svg{flex:none;opacity:.9}
+
+.hero-bullets{margin-top:28px;display:grid;gap:12px}
+.hero-bullets li{display:flex;gap:12px;align-items:flex-start;color:var(--muted);font-size:16px}
+.hero-bullets b{color:var(--text);font-weight:600}
+.tick{
+  flex:none;width:22px;height:22px;border-radius:7px;margin-top:1px;
+  background:var(--neon);
+  display:grid;place-items:center;
+}
+.tick svg{width:12px;height:12px}
+
+.hero-speaker{
+  display:flex;align-items:center;gap:14px;margin-top:32px;
+  padding:14px 18px 14px 14px;border-radius:16px;
+  background:rgba(255,255,255,.035);border:1px solid var(--line);
+  max-width:430px;
+}
+.avatar{
+  width:52px;height:52px;border-radius:14px;flex:none;object-fit:cover;
+  background:var(--neon);
+  display:grid;place-items:center;
+  font-family:"Space Grotesk",sans-serif;font-weight:700;color:#04060E;
+}
+.hero-speaker span{display:block;font-size:14px;color:var(--muted)}
+.hero-speaker strong{font-size:16px}
+
+/* Cartão do formulário */
+.form-card{
+  position:relative;
+  border-radius:var(--radius-lg);
+  padding:2px;
+  background:linear-gradient(150deg,rgba(37,245,138,.55),rgba(47,107,255,.35) 45%,rgba(168,85,247,.55));
+  box-shadow:var(--shadow);
+}
+.form-card__inner{
+  background:linear-gradient(165deg,#0A1030,#06091C);
+  border-radius:calc(var(--radius-lg) - 2px);
+  padding:clamp(24px,3vw,32px);
+}
+.form-card h3{font-size:23px;margin-bottom:6px}
+.form-card .sub{color:var(--muted);font-size:15px;margin-bottom:22px}
+
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:24px}
+.cd-box{
+  background:rgba(255,255,255,.045);border:1px solid var(--line);
+  border-radius:12px;padding:11px 4px;text-align:center;
+}
+.cd-num{
+  font-family:"Space Grotesk",sans-serif;font-size:26px;font-weight:700;line-height:1;
+  background:var(--neon);-webkit-background-clip:text;background-clip:text;color:transparent;
+  font-variant-numeric:tabular-nums;
+}
+.cd-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-top:6px}
+
+.field{margin-bottom:13px}
+.field label{display:block;font-size:13px;font-weight:500;color:var(--muted);margin-bottom:6px}
+.field input,.field select{
+  width:100%;height:50px;padding:0 15px;
+  background:rgba(255,255,255,.045);
+  border:1px solid var(--line-strong);
+  border-radius:12px;color:var(--text);font-size:15px;
+  transition:border-color .2s,box-shadow .2s,background .2s;
+  appearance:none;
+}
+.field select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238FB2FF' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 15px center;padding-right:40px;
+}
+.field select option{background:#0A1030;color:var(--text)}
+.field input::placeholder{color:var(--muted-2)}
+.field input:focus,.field select:focus{
+  outline:none;border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(37,245,138,.16);
+  background:rgba(255,255,255,.07);
+}
+.field.has-error input,.field.has-error select{border-color:#FF5C7A;box-shadow:0 0 0 3px rgba(255,92,122,.14)}
+.field .err{display:none;color:#FF8FA3;font-size:12.5px;margin-top:5px}
+.field.has-error .err{display:block}
+.field-row{display:grid;gap:13px}
+@media(min-width:520px){.field-row{grid-template-columns:1fr 1fr}}
+
+.form-legal{margin-top:14px;font-size:12px;line-height:1.5;color:var(--muted-2);text-align:center}
+.form-legal a{color:var(--blue-soft)}
+
+.form-success{display:none;text-align:center;padding:16px 4px}
+.form-success.is-on{display:block}
+.form-card.is-done .form-body{display:none}
+.form-success .ok{
+  width:62px;height:62px;border-radius:50%;margin:0 auto 18px;
+  background:var(--neon);display:grid;place-items:center;
+}
+.form-success h3{margin-bottom:10px}
+.form-success p{color:var(--muted);font-size:15px}
+
+/* ============ 7. FAIXA DE DESTAQUES ============ */
+.strip{
+  border-block:1px solid var(--line);
+  background:linear-gradient(100deg,rgba(37,245,138,.10),rgba(47,107,255,.10) 50%,rgba(168,85,247,.12));
+}
+.strip .wrap{display:grid;gap:18px;padding-block:26px}
+@media(min-width:860px){.strip .wrap{grid-template-columns:1fr 1fr;gap:32px}}
+.strip-item{display:flex;gap:14px;align-items:flex-start}
+.strip-ic{
+  flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(255,255,255,.07);border:1px solid var(--line-strong);
+}
+.strip-item strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:17px;margin-bottom:3px}
+.strip-item span{font-size:14.5px;color:var(--muted)}
+
+/* ============ 8. BLOCOS DE CONTEÚDO ============ */
+.section-head{max-width:720px;margin:0 auto 44px;text-align:center}
+.section-head h2{margin:18px 0 14px}
+
+.topic{display:flex;gap:20px;align-items:flex-start;height:100%}
+.topic .num{
+  flex:none;width:52px;height:52px;border-radius:14px;
+  display:grid;place-items:center;
+  font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:20px;color:#04060E;
+  background:var(--neon);
+}
+.topic h4{margin-bottom:8px}
+.topic p{color:var(--muted);font-size:15.5px}
+
+/* Cases antes/depois */
+.cases{display:grid;gap:16px;margin-top:8px}
+@media(min-width:760px){.cases{grid-template-columns:repeat(3,1fr)}}
+.case{
+  border:1px solid var(--line);border-radius:18px;padding:24px;
+  background:linear-gradient(160deg,rgba(47,107,255,.10),rgba(168,85,247,.06));
+  text-align:center;
+}
+.case .name{font-family:"Space Grotesk",sans-serif;font-size:22px;font-weight:700;margin-bottom:8px}
+.case .ba{
+  display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--green);
+}
+.case p{color:var(--muted);font-size:14.5px;margin-top:12px}
+
+/* Palestrante */
+.speaker{
+  display:grid;gap:28px;align-items:center;
+  border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:clamp(26px,3.4vw,40px);
+  background:linear-gradient(150deg,#0B1234,#06091C);
+  box-shadow:var(--shadow);
+}
+@media(min-width:820px){.speaker{grid-template-columns:270px 1fr;gap:40px}}
+.speaker-photo{
+  position:relative;border-radius:22px;overflow:hidden;
+  aspect-ratio:1/1;background:linear-gradient(150deg,#12204F,#0A1030);
+  border:1px solid var(--line-strong);
+  display:grid;place-items:center;
+}
+.speaker-photo img{width:100%;height:100%;object-fit:cover}
+.speaker-photo .initials{
+  font-family:"Space Grotesk",sans-serif;font-size:64px;font-weight:700;
+  background:var(--neon);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.speaker-role{color:var(--green);font-weight:600;margin:8px 0 16px;font-size:15px}
+.speaker p{color:var(--muted);font-size:16px}
+.speaker p + p{margin-top:14px}
+.speaker-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.tag{
+  font-size:12.5px;padding:7px 12px;border-radius:999px;
+  border:1px solid var(--line-strong);background:rgba(255,255,255,.04);color:var(--muted);
+}
+
+/* Público-alvo */
+.who{display:grid;gap:14px}
+@media(min-width:760px){.who{grid-template-columns:repeat(3,1fr)}}
+.who-item{
+  display:flex;gap:12px;align-items:flex-start;
+  border:1px solid var(--line);border-radius:16px;padding:20px;
+  background:rgba(255,255,255,.03);
+}
+.who-item svg{flex:none;margin-top:2px}
+.who-item b{display:block;margin-bottom:4px}
+.who-item span{color:var(--muted);font-size:14.5px}
+
+/* ============ 9. SORTEIO / BÔNUS ============ */
+.prize{
+  border-radius:var(--radius-lg);padding:2px;
+  background:linear-gradient(120deg,rgba(37,245,138,.6),rgba(47,107,255,.3),rgba(168,85,247,.6));
+  box-shadow:var(--shadow);
+}
+.prize__inner{
+  border-radius:calc(var(--radius-lg) - 2px);
+  background:radial-gradient(120% 130% at 15% 0%,rgba(37,245,138,.10),transparent 55%),
+             linear-gradient(160deg,#0A1030,#06091C);
+  padding:clamp(30px,4vw,52px);
+  text-align:center;
+}
+.prize h2{margin-bottom:16px}
+.prize .lead{max-width:640px;margin:0 auto}
+.prize-pair{display:grid;gap:16px;margin:34px 0 30px;text-align:left}
+@media(min-width:760px){.prize-pair{grid-template-columns:1fr 1fr}}
+.prize-box{
+  border:1px solid var(--line-strong);border-radius:18px;padding:24px;
+  background:rgba(255,255,255,.04);
+}
+.prize-box .kicker{
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--green);font-weight:700;margin-bottom:10px;display:block;
+}
+.prize-box h4{margin-bottom:8px}
+.prize-box p{color:var(--muted);font-size:15px}
+
+/* ============ 10. FAQ ============ */
+.faq{max-width:860px;margin-inline:auto}
+.accordion{
+  border:1px solid var(--line);border-radius:16px;margin-bottom:12px;
+  background:rgba(255,255,255,.03);overflow:hidden;
+}
+.accordion-btn{
+  width:100%;text-align:left;cursor:pointer;background:none;border:0;
+  font-family:"Space Grotesk",sans-serif;font-size:17px;font-weight:600;color:var(--text);
+  padding:22px 58px 22px 24px;position:relative;line-height:1.35;
+}
+.accordion-btn::before,.accordion-btn::after{
+  content:"";position:absolute;right:24px;top:50%;
+  width:13px;height:2px;background:var(--green);transform:translateY(-50%);
+  transition:opacity .3s ease,transform .3s ease;
+}
+.accordion-btn::after{transform:translateY(-50%) rotate(90deg)}
+.accordion.open .accordion-btn::after{opacity:0}
+.accordion-content{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.accordion-content p{padding:0 24px 22px;color:var(--muted);font-size:15.5px}
+.accordion-btn:focus-visible{outline:3px solid var(--green);outline-offset:-3px}
+
+/* ============ 11. CTA FINAL E RODAPÉ ============ */
+.final{text-align:center}
+.final h2{max-width:760px;margin:18px auto 16px}
+.final .lead{max-width:620px;margin:0 auto 32px}
+
+.site-footer{border-top:1px solid var(--line);background:var(--bg-alt);padding:34px 0}
+.site-footer .wrap{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.site-footer p{font-size:13.5px;color:var(--muted-2)}
+.site-footer a{color:var(--blue-soft);text-decoration:none}
+.site-footer a:hover{text-decoration:underline}
+
+/* ============ 12. ANIMAÇÕES E ACESSIBILIDADE ============ */
+
+/* Barra fixa de CTA — apenas mobile, após o formulário do hero sair da tela */
+.mobile-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  display:none;align-items:center;gap:12px;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(5,7,15,.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  transform:translateY(110%);transition:transform .35s ease;
+}
+.mobile-cta.is-on{transform:none}
+.mobile-cta .when{flex:1;font-size:12.5px;line-height:1.3;color:var(--muted)}
+.mobile-cta .when b{display:block;color:var(--text);font-size:13.5px}
+.mobile-cta .btn{padding:13px 18px;font-size:13px;border-radius:12px}
+@media(max-width:900px){
+  .mobile-cta{display:flex}
+  body{padding-bottom:0}
+  .site-footer{padding-bottom:84px}
+}
+
+body.js-reveal .reveal{opacity:0;transform:translateY(34px)}
+body.js-reveal .reveal.is-in{
+  opacity:1;transform:none;
+  transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);
+}
+.pulse{animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+.float{animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  body.js-reveal .reveal{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Fundo: grid técnico + orbs neon -->
+<div class="bg-fx" aria-hidden="true">
+  <div class="grid-lines"></div>
+  <div class="orb orb--green"></div>
+  <div class="orb orb--blue"></div>
+  <div class="orb orb--purple"></div>
+</div>
+
+<!-- ===================== HEADER (STICKY) ===================== -->
+<header class="site-header">
+  <div class="wrap">
+    <div class="lockup">
+      <!-- LOGO REVI — trocar por assets/logo-revi.svg quando tiver o arquivo oficial -->
+      <a class="logo logo--revi" href="#topo" aria-label="Revi">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="1.2" y="1.2" width="29.6" height="29.6" rx="9" fill="url(#reviGrad)"/>
+          <path d="M10 22V10.6h5.6a3.6 3.6 0 0 1 .7 7.1L19.8 22h-3.3l-3-4h-.5v4H10Zm3-6.6h2.3a1.5 1.5 0 0 0 0-3H13v3Z" fill="#fff"/>
+          <defs>
+            <linearGradient id="reviGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#2F6BFF"/><stop offset="1" stop-color="#0B2A9E"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-word">revi</span>
+      </a>
+
+      <span class="x" aria-hidden="true">×</span>
+
+      <!-- LOGO UNBOX — trocar por assets/logo-unbox.svg quando tiver o arquivo oficial -->
+      <a class="logo logo--unbox" href="#topo" aria-label="Unbox">
+        <svg class="logo-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <path d="M50 3C57 29 71 43 97 50 71 57 57 71 50 97 43 71 29 57 3 50 29 43 43 29 50 3Z"
+                fill="url(#unboxGrad)" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="unboxGrad" x1="12" y1="10" x2="88" y2="92" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#25F58A"/><stop offset=".5" stop-color="#5B7BFF"/><stop offset="1" stop-color="#A855F7"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-word">unbox</span>
+      </a>
+    </div>
+
+    <div class="header-right">
+      <span class="header-date">8 de setembro · <b>19h</b> · Online</span>
+      <a class="btn btn--primary btn--sm" href="#inscricao">Garantir minha vaga</a>
+    </div>
+  </div>
+</header>
+
+<main id="topo">
+
+<!-- ===================== HERO ===================== -->
+<section class="section hero">
+  <div class="wrap hero-grid">
+
+    <!-- Coluna esquerda: promessa -->
+    <div>
+      <span class="eyebrow"><span class="dot pulse"></span> Webinar ao vivo e gratuito</span>
+
+      <h1>
+        Sua loja <span class="grad">hipercustomizada com IA</span> — no ar em menos de 2 horas.
+      </h1>
+
+      <p class="lead">
+        No dia <b style="color:var(--text)">8 de setembro, às 19h</b>, Bruno Pereira mostra ao vivo a IA
+        da Unbox criando um e-commerce do zero — e o antes e depois de marcas que pararam de
+        parecer com todas as outras.
+      </p>
+
+      <div class="hero-when">
+        <span class="chip">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#25F58A" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+          8 de setembro, terça-feira
+        </span>
+        <span class="chip">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8FB2FF" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          19h (horário de Brasília)
+        </span>
+        <span class="chip">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C79BFF" stroke-width="2" stroke-linecap="round"><path d="M15 10l5-3v10l-5-3v-4Z"/><rect x="3" y="6" width="12" height="12" rx="3"/></svg>
+          Transmissão online
+        </span>
+      </div>
+
+      <ul class="hero-bullets">
+        <li>
+          <span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#04060E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+          <span><b>Demonstração prática:</b> a IA da Unbox criando um site na sua frente.</span>
+        </li>
+        <li>
+          <span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#04060E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+          <span><b>Sorteio ao vivo:</b> uma mudança total de e-commerce para um participante da call.</span>
+        </li>
+        <li>
+          <span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#04060E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+          <span><b>Mega desconto exclusivo</b> para quem estiver na transmissão criar a loja com a Unbox.</span>
+        </li>
+      </ul>
+
+      <div class="hero-speaker">
+        <div class="avatar" aria-hidden="true">BP</div>
+        <div>
+          <strong>Bruno Pereira</strong>
+          <span>Fundador da Unbox · líder em AI Commerce no Brasil</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coluna direita: formulário de inscrição -->
+    <div id="inscricao">
+      <div class="form-card" id="formCard">
+        <div class="form-card__inner">
+
+          <div class="form-body">
+            <h3>Garanta sua vaga gratuita</h3>
+            <p class="sub">Vagas limitadas. O link da transmissão chega por e-mail e WhatsApp.</p>
+
+            <div class="countdown" id="countdown" role="timer" aria-label="Contagem regressiva para o webinar">
+              <div class="cd-box"><div class="cd-num" data-cd="d">--</div><div class="cd-label">Dias</div></div>
+              <div class="cd-box"><div class="cd-num" data-cd="h">--</div><div class="cd-label">Horas</div></div>
+              <div class="cd-box"><div class="cd-num" data-cd="m">--</div><div class="cd-label">Min</div></div>
+              <div class="cd-box"><div class="cd-num" data-cd="s">--</div><div class="cd-label">Seg</div></div>
+            </div>
+
+            <form id="leadForm" novalidate>
+              <div class="field">
+                <label for="f-name">Nome completo*</label>
+                <input id="f-name" name="name" type="text" placeholder="Como podemos te chamar?" autocomplete="name" required>
+                <span class="err">Preencha seu nome.</span>
+              </div>
+
+              <div class="field">
+                <label for="f-email">E-mail*</label>
+                <input id="f-email" name="email" type="email" placeholder="voce@sualoja.com.br" autocomplete="email" required>
+                <span class="err">Informe um e-mail válido.</span>
+              </div>
+
+              <div class="field">
+                <label for="f-phone">WhatsApp*</label>
+                <input id="f-phone" name="personal_phone" type="tel" placeholder="(11) 90000-0000" autocomplete="tel" inputmode="tel" required>
+                <span class="err">Informe um WhatsApp com DDD.</span>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="f-store">Site ou @ da sua loja</label>
+                  <input id="f-store" name="cf_loja" type="text" placeholder="sualoja.com.br">
+                </div>
+                <div class="field">
+                  <label for="f-revenue">Faturamento mensal*</label>
+                  <select id="f-revenue" name="cf_faturamento_mensal" required>
+                    <option value="">Selecione</option>
+                    <option>Ainda não vendo / vou lançar</option>
+                    <option>Até R$ 20 mil</option>
+                    <option>R$ 20 mil a R$ 100 mil</option>
+                    <option>R$ 100 mil a R$ 500 mil</option>
+                    <option>Acima de R$ 500 mil</option>
+                  </select>
+                  <span class="err">Escolha uma opção.</span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--block" id="submitBtn">
+                Quero minha vaga gratuita
+              </button>
+              <span class="btn-note">100% gratuito · sorteio e desconto só para quem participa ao vivo</span>
+
+              <p class="form-legal">
+                Ao se inscrever, você concorda em receber comunicações sobre o evento e aceita a
+                <a href="#" target="_blank" rel="noopener">Política de Privacidade</a>.
+              </p>
+            </form>
+          </div>
+
+          <!-- Estado de sucesso -->
+          <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+            <div class="ok" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#04060E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
+            </div>
+            <h3>Inscrição confirmada!</h3>
+            <p>Enviamos o link de acesso para o seu e-mail. Fique de olho no WhatsApp: mandamos um lembrete pouco antes das 19h do dia 8 de setembro.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== FAIXA DE DESTAQUES ===================== -->
+<section class="strip">
+  <div class="wrap">
+    <div class="strip-item">
+      <span class="strip-ic" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#25F58A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8h-3.2a3 3 0 1 0-4.8-3 3 3 0 1 0-4.8 3H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1ZM5 14v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6M12 8v13"/></svg>
+      </span>
+      <div>
+        <strong>Sorteio ao vivo de uma mudança total de e-commerce</strong>
+        <span>Um participante da call sai com a loja inteira reformulada pela Unbox.</span>
+      </div>
+    </div>
+    <div class="strip-item">
+      <span class="strip-ic" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C79BFF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5 3.5 14.5a2 2 0 0 0 0 2.8l3.2 3.2a2 2 0 0 0 2.8 0L20.5 9.5V3.5h-6Z"/><circle cx="16.8" cy="7.2" r="1.2" fill="#C79BFF"/></svg>
+      </span>
+      <div>
+        <strong>Mega desconto exclusivo para participantes</strong>
+        <span>Condição especial para subir sua loja com a Unbox, liberada só na transmissão.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTEXTO / PROBLEMA ===================== -->
+<section class="section section--alt">
+  <div class="wrap grid grid-2" style="align-items:center;gap:44px">
+    <div class="reveal">
+      <span class="eyebrow eyebrow--blue"><span class="dot"></span> Por que agora</span>
+      <h2 style="margin:18px 0 18px">
+        Lojas iguais vendem igual.<br><span class="grad">A diferença agora é hipercustomização.</span>
+      </h2>
+      <p class="lead">
+        A maioria dos e-commerces roda no mesmo tema, com a mesma vitrine e a mesma jornada de compra —
+        e depois briga por atenção só no preço e na mídia paga. Enquanto isso, a IA já consegue construir
+        loja, conteúdo e jornada sob medida para cada marca e cada cliente.
+      </p>
+      <p class="lead" style="margin-top:16px">
+        Neste webinar você vai ver isso acontecendo na prática: da criação do site pela IA até
+        um time de agentes operando a loja no dia a dia.
+      </p>
+    </div>
+
+    <div class="grid reveal" style="gap:14px">
+      <div class="card">
+        <h4 style="margin-bottom:8px">Menos de 2 horas</h4>
+        <p style="color:var(--muted);font-size:15.5px">É o tempo que a Unbox leva para colocar no ar uma loja totalmente personalizada.</p>
+      </div>
+      <div class="card">
+        <h4 style="margin-bottom:8px">Agentes de IA operando</h4>
+        <p style="color:var(--muted);font-size:15.5px">O e-commerce deixa de depender só de braço humano para tarefas repetitivas da operação.</p>
+      </div>
+      <div class="card">
+        <h4 style="margin-bottom:8px">Foco em marcas D2C</h4>
+        <p style="color:var(--muted);font-size:15.5px">Plataforma pensada para quem vende direto ao consumidor e precisa de identidade própria.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== O QUE VOCÊ VAI DESCOBRIR ===================== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Conteúdo do webinar</span>
+      <h2>O que você vai descobrir</h2>
+      <p class="lead">Uma hora direta ao ponto, com demonstração ao vivo, casos reais e duas oportunidades que só existem na transmissão.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card reveal">
+        <div class="topic">
+          <span class="num">01</span>
+          <div>
+            <h4>A IA construindo uma loja na sua frente</h4>
+            <p>Demonstração prática da IA da Unbox criando um e-commerce do zero: layout, conteúdo e jornada de compra personalizados para a marca.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="topic">
+          <span class="num">02</span>
+          <div>
+            <h4>Antes e depois de marcas reais</h4>
+            <p>Os cases da Zétona, Oddie e Oto: o que mudou na loja, na experiência do cliente e na forma como cada marca passou a vender.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="topic">
+          <span class="num">03</span>
+          <div>
+            <h4>Sorteio de uma mudança total de e-commerce</h4>
+            <p>Ao vivo, um participante da call é sorteado para ter o e-commerce inteiro reformulado. Só quem está na transmissão concorre.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="topic">
+          <span class="num">04</span>
+          <div>
+            <h4>Mega desconto exclusivo para criar sua loja</h4>
+            <p>Uma condição especial para subir sua loja com a Unbox, apresentada e liberada apenas para quem participar do webinar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="center" style="margin-top:36px">
+      <a class="btn btn--primary" href="#inscricao">Quero participar do webinar</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CASES ANTES E DEPOIS ===================== -->
+<section class="section section--alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow eyebrow--blue"><span class="dot"></span> Antes e depois</span>
+      <h2>Marcas que deixaram de parecer com todas as outras</h2>
+      <p class="lead">No webinar, cada case é aberto na tela: como a loja era, como ficou e o que a IA fez no meio do caminho.</p>
+    </div>
+
+    <div class="cases">
+      <div class="case reveal">
+        <span class="ba">Antes → Depois</span>
+        <div class="name" style="margin-top:10px">Zétona</div>
+        <p>Reconstrução completa da vitrine e da jornada de compra com identidade própria.</p>
+      </div>
+      <div class="case reveal">
+        <span class="ba">Antes → Depois</span>
+        <div class="name" style="margin-top:10px">Oddie</div>
+        <p>Loja hipercustomizada no ar em poucas horas, sem depender de time técnico.</p>
+      </div>
+      <div class="case reveal">
+        <span class="ba">Antes → Depois</span>
+        <div class="name" style="margin-top:10px">Oto</div>
+        <p>Experiência de marca D2C redesenhada do topo da home até o checkout.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PALESTRANTE ===================== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Quem conduz</span>
+      <h2>Conheça o palestrante</h2>
+    </div>
+
+    <div class="speaker reveal">
+      <div class="speaker-photo">
+        <!-- Troque por assets/bruno-pereira.jpg. Sem o arquivo, cai no monograma. -->
+        <img src="assets/bruno-pereira.jpg" alt="Bruno Pereira, fundador da Unbox"
+             onerror="this.remove();document.getElementById('brunoInitials').hidden=false">
+        <span class="initials" id="brunoInitials" hidden>BP</span>
+      </div>
+
+      <div>
+        <h3>Bruno Pereira</h3>
+        <p class="speaker-role">Fundador da Unbox</p>
+        <p>
+          Bruno é fundador da Unbox, plataforma que permite subir uma loja totalmente personalizada
+          em menos de 2 horas e operar e-commerces com um time de agentes de IA.
+        </p>
+        <p>
+          A Unbox lidera o tema <b style="color:var(--text)">AI Commerce no Brasil</b> com uma plataforma
+          focada em marcas D2C — e é essa tecnologia que ele vai abrir ao vivo, sem slide teórico:
+          criando loja, mostrando cases e respondendo perguntas na hora.
+        </p>
+        <div class="speaker-tags">
+          <span class="tag">AI Commerce</span>
+          <span class="tag">Marcas D2C</span>
+          <span class="tag">Agentes de IA</span>
+          <span class="tag">Hipercustomização</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PARA QUEM É ===================== -->
+<section class="section section--alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow eyebrow--blue"><span class="dot"></span> Para quem é</span>
+      <h2>Feito para quem vive o e-commerce todo dia</h2>
+    </div>
+
+    <div class="who reveal">
+      <div class="who-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25F58A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-4.5h15L21 9M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Zm5 0a4 4 0 0 0 8 0"/></svg>
+        <div><b>Lojistas</b><span>Quem já vende online e quer uma loja com cara de marca, não de template.</span></div>
+      </div>
+      <div class="who-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8FB2FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.4L20 10l-5.6 1.6L12 17l-2.4-5.4L4 10l5.6-1.6L12 3Z"/></svg>
+        <div><b>Empreendedores</b><span>Quem vai lançar e quer subir rápido, sem travar em desenvolvimento.</span></div>
+      </div>
+      <div class="who-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C79BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10m5 10V5m5 15v-7m5 7V8"/></svg>
+        <div><b>Donos de marcas D2C</b><span>Quem vende direto ao consumidor e precisa de diferenciação real.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SORTEIO + DESCONTO ===================== -->
+<section class="section">
+  <div class="wrap">
+    <div class="prize reveal">
+      <div class="prize__inner">
+        <span class="eyebrow"><span class="dot pulse"></span> Só para quem estiver ao vivo</span>
+        <h2 style="margin-top:18px">Dois motivos a mais para não perder</h2>
+        <p class="lead">Inscrição garante o link. O sorteio e o desconto acontecem durante a transmissão.</p>
+
+        <div class="prize-pair">
+          <div class="prize-box">
+            <span class="kicker">Sorteio ao vivo</span>
+            <h4>Uma mudança total de e-commerce</h4>
+            <p>Um participante da call é sorteado para ter a loja inteira refeita com a tecnologia da Unbox — do layout à jornada de compra.</p>
+          </div>
+          <div class="prize-box">
+            <span class="kicker">Bônus para todos</span>
+            <h4>Mega desconto exclusivo</h4>
+            <p>Todos os participantes recebem uma condição especial para criar a loja com a Unbox, válida apenas para quem assistir.</p>
+          </div>
+        </div>
+
+        <a class="btn btn--primary" href="#inscricao">Quero concorrer e garantir o desconto</a>
+        <span class="btn-note">8 de setembro · 19h · online e gratuito</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="section section--alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow eyebrow--blue"><span class="dot"></span> Dúvidas</span>
+      <h2>Perguntas frequentes</h2>
+    </div>
+
+    <div class="faq reveal">
+      <div class="accordion">
+        <button class="accordion-btn" type="button" aria-expanded="false">Quando e onde acontece o webinar?</button>
+        <div class="accordion-content"><p>No dia <strong>8 de setembro (terça-feira), às 19h</strong> no horário de Brasília, em transmissão online. Depois da inscrição, você recebe o link de acesso por e-mail e um lembrete no WhatsApp pouco antes de começar.</p></div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-btn" type="button" aria-expanded="false">Para quem é este webinar?</button>
+        <div class="accordion-content"><p>Para <strong>lojistas, empreendedores e donos de e-commerce</strong>, com foco em marcas D2C — tanto quem já vende quanto quem está prestes a lançar a operação.</p></div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-btn" type="button" aria-expanded="false">Preciso entender de tecnologia ou de IA para acompanhar?</button>
+        <div class="accordion-content"><p>Não. O conteúdo é conduzido do ponto de vista de quem toca a loja, não de quem programa. A demonstração mostra a IA criando o site na prática, passo a passo.</p></div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-btn" type="button" aria-expanded="false">Como funciona o sorteio da mudança total de e-commerce?</button>
+        <div class="accordion-content"><p>O sorteio acontece <strong>ao vivo, durante a transmissão</strong>, entre os participantes presentes na call. Por isso a recomendação é entrar no horário e ficar até o fim.</p></div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-btn" type="button" aria-expanded="false">E o mega desconto, como eu recebo?</button>
+        <div class="accordion-content"><p>A condição especial é apresentada durante o webinar e liberada apenas para quem estiver assistindo. Não é divulgada antes nem depois da transmissão.</p></div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-btn" type="button" aria-expanded="false">Preciso ser cliente da Revi ou da Unbox para participar?</button>
+        <div class="accordion-content"><p>Não. O webinar é aberto e gratuito para qualquer pessoa que trabalhe com e-commerce e queira entender como aplicar IA na loja e na jornada de compra.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="section final">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot pulse"></span> Últimas vagas</span>
+    <h2 class="reveal">Sua loja pode estar <span class="grad">hipercustomizada</span> antes do fim do mês.</h2>
+    <p class="lead reveal">Reserve sua vaga gratuita e participe ao vivo em 8 de setembro, às 19h. É quando a demonstração acontece, o sorteio é feito e o desconto é liberado.</p>
+    <div class="reveal">
+      <a class="btn btn--primary" href="#inscricao">Garantir minha vaga gratuita</a>
+      <span class="btn-note">Leva menos de 30 segundos para se inscrever</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== RODAPÉ ===================== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© <span id="year">2026</span> Revi × Unbox — Todos os direitos reservados.</p>
+    <p><a href="#" target="_blank" rel="noopener">Política de Privacidade</a> · <a href="#inscricao">Inscreva-se</a></p>
+  </div>
+</footer>
+
+<!-- CTA fixo (mobile) -->
+<div class="mobile-cta" id="mobileCta">
+  <div class="when">
+    <b>8 de setembro, 19h</b>
+    Online, gratuito e com sorteio ao vivo
+  </div>
+  <a class="btn btn--primary" href="#inscricao">Quero minha vaga</a>
+</div>
+
+<script>
+/* =========================================================================
+   CONFIGURAÇÃO — ajuste aqui antes de publicar
+   ========================================================================= */
+var CONFIG = {
+  // Data/hora do webinar (ISO com fuso de Brasília)
+  eventDate: '2026-09-08T19:00:00-03:00',
+
+  // Endpoint do formulário. Deixe vazio ('') para o modo demonstração,
+  // que apenas exibe a tela de confirmação sem enviar dados.
+  // Ex. RD Station: 'https://cta-redirect.rdstation.com/v2/conversions'
+  formEndpoint: '',
+
+  // Página de obrigado (usada quando formEndpoint está configurado)
+  thankYouUrl: ''
+};
+
+(function () {
+  'use strict';
+
+  /* ---------- Ano do rodapé ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Contagem regressiva ---------- */
+  var target = new Date(CONFIG.eventDate).getTime();
+  var cdEls = {
+    d: document.querySelector('[data-cd="d"]'),
+    h: document.querySelector('[data-cd="h"]'),
+    m: document.querySelector('[data-cd="m"]'),
+    s: document.querySelector('[data-cd="s"]')
+  };
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function tickCountdown() {
+    var diff = target - Date.now();
+    if (diff <= 0) {
+      cdEls.d.textContent = cdEls.h.textContent = cdEls.m.textContent = cdEls.s.textContent = '00';
+      return;
+    }
+    var s = Math.floor(diff / 1000);
+    cdEls.d.textContent = pad(Math.floor(s / 86400));
+    cdEls.h.textContent = pad(Math.floor(s % 86400 / 3600));
+    cdEls.m.textContent = pad(Math.floor(s % 3600 / 60));
+    cdEls.s.textContent = pad(s % 60);
+  }
+  tickCountdown();
+  setInterval(tickCountdown, 1000);
+
+  /* ---------- Máscara de telefone (BR) ---------- */
+  var phone = document.getElementById('f-phone');
+  phone.addEventListener('input', function () {
+    var v = phone.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length > 6) {
+      phone.value = '(' + v.slice(0, 2) + ') ' + v.slice(2, v.length > 10 ? 7 : 6) + '-' + v.slice(v.length > 10 ? 7 : 6);
+    } else if (v.length > 2) {
+      phone.value = '(' + v.slice(0, 2) + ') ' + v.slice(2);
+    } else {
+      phone.value = v;
+    }
+  });
+
+  /* ---------- Validação e envio ---------- */
+  var form = document.getElementById('leadForm');
+  var card = document.getElementById('formCard');
+  var success = document.getElementById('formSuccess');
+  var submitBtn = document.getElementById('submitBtn');
+
+  function setError(input, on) {
+    input.closest('.field').classList.toggle('has-error', on);
+  }
+  function validate() {
+    var ok = true;
+    var name = form.name;
+    var email = form.email;
+    var rev = form.cf_faturamento_mensal;
+
+    var nameOk = name.value.trim().length >= 2;
+    setError(name, !nameOk); ok = ok && nameOk;
+
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
+    setError(email, !emailOk); ok = ok && emailOk;
+
+    var phoneOk = phone.value.replace(/\D/g, '').length >= 10;
+    setError(phone, !phoneOk); ok = ok && phoneOk;
+
+    var revOk = rev.value !== '';
+    setError(rev, !revOk); ok = ok && revOk;
+
+    return ok;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!validate()) {
+      var firstErr = form.querySelector('.has-error input, .has-error select');
+      if (firstErr) firstErr.focus();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    if (CONFIG.formEndpoint) {
+      // Envio real: posta o formulário para o endpoint configurado.
+      form.action = CONFIG.formEndpoint;
+      form.method = 'POST';
+      if (CONFIG.thankYouUrl && !form.querySelector('[name="redirect_to"]')) {
+        var hidden = document.createElement('input');
+        hidden.type = 'hidden';
+        hidden.name = 'redirect_to';
+        hidden.value = CONFIG.thankYouUrl;
+        form.appendChild(hidden);
+      }
+      form.submit();
+      return;
+    }
+
+    // Modo demonstração: confirma na tela sem enviar dados.
+    card.classList.add('is-done');
+    success.classList.add('is-on');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // Limpa o erro assim que o usuário corrige o campo
+  form.addEventListener('input', function (e) {
+    var field = e.target.closest('.field');
+    if (field && field.classList.contains('has-error')) field.classList.remove('has-error');
+  });
+
+  /* ---------- FAQ (accordion) ---------- */
+  var items = document.querySelectorAll('.faq .accordion');
+  items.forEach(function (item) {
+    var btn = item.querySelector('.accordion-btn');
+    var content = item.querySelector('.accordion-content');
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      items.forEach(function (other) {
+        other.classList.remove('open');
+        other.querySelector('.accordion-content').style.maxHeight = null;
+        other.querySelector('.accordion-btn').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ---------- CTA fixo no mobile ---------- */
+  var mobileCta = document.getElementById('mobileCta');
+  var formAnchor = document.getElementById('inscricao');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      // some quando o formulário está visível, aparece quando ele sai da tela
+      mobileCta.classList.toggle('is-on', !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(formAnchor);
+  }
+
+  /* ---------- Revelação no scroll (à prova de falha: sem JS, tudo visível) ---------- */
+  var blocks = document.querySelectorAll('.reveal');
+  if (blocks.length && 'IntersectionObserver' in window) {
+    document.body.classList.add('js-reveal');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+    blocks.forEach(function (b) { io.observe(b); });
+  }
+})();
+</script>
+
+</body>
+</html>
