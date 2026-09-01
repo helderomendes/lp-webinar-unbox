@@ -1,55 +1,91 @@
 # Copy da LP — Webinar Revi × Unbox
 
-Textos usados na página, prontos para reaproveitar em e-mail, anúncio e redes.
+Versão pós-revisão de CRO. Os trechos marcados como `[...]` dependem de dado real
+(ver "Pendências" no final) — não publique a página com eles no ar.
 
 ## 1. Headline
 
-> **Sua loja hipercustomizada com IA — no ar em menos de 2 horas.**
+Eyebrow: **Ao vivo · 8 de setembro, 19h · gratuito**
 
-Alternativas testáveis:
-- Pare de vender numa loja igual à de todo mundo.
-- A IA que constrói seu e-commerce inteiro — do layout ao checkout.
-- Hipercustomize seu e-commerce com IA (e veja acontecendo ao vivo).
+> **Veja uma IA montar uma loja de e-commerce do zero.**
+
+Variação para teste A/B: *"Sua loja no ar em menos de 2 horas, construída por IA. Veja acontecendo ao vivo."*
 
 ## 2. Sub-headline
 
-> No dia **8 de setembro, às 19h**, Bruno Pereira mostra ao vivo a IA da Unbox criando um
-> e-commerce do zero — e o antes e depois de marcas que pararam de parecer com todas as outras.
+> Webinar gratuito para quem vende online. Bruno Pereira, da Unbox, cria uma loja na sua frente,
+> abre o antes e depois de 3 marcas reais e sorteia a reformulação completa de um e-commerce
+> entre quem estiver na call.
 
-## 3. CTAs
+## 3. Bullets do hero
+
+- Você vê a loja nascer do zero — layout, textos e páginas de produto — **sem escrever uma linha de código**.
+- **Um participante sai da call com o e-commerce inteiro refeito.** O sorteio é ao vivo.
+- **[X]% de desconto** para montar sua loja, liberado só na transmissão.
+
+## 4. CTAs
 
 | Posição | Texto |
 |---|---|
 | Header | Garantir minha vaga |
 | Formulário | Quero minha vaga gratuita |
-| Após conteúdo | Quero participar do webinar |
-| Bloco do sorteio | Quero concorrer e garantir o desconto |
-| CTA final | Garantir minha vaga gratuita |
+| Após conteúdo | Quero ver a IA montando a loja |
+| Bloco do sorteio | Quero concorrer ao sorteio |
+| CTA final | Quero minha vaga (é grátis) |
 | Barra mobile | Quero minha vaga |
 
-Micro-copy de apoio: *"100% gratuito · sorteio e desconto só para quem participa ao vivo"*.
+Micro-copy: *"100% gratuito · sorteio e desconto só para quem participa ao vivo"* e *"20 segundos para se inscrever"*.
 
-## 4. O que você vai descobrir
+## 5. Formulário
 
-1. **A IA construindo uma loja na sua frente** — demonstração prática da IA da Unbox criando um
-   e-commerce do zero: layout, conteúdo e jornada de compra personalizados para a marca.
-2. **Antes e depois de marcas reais** — os cases da Zétona, Oddie e Oto: o que mudou na loja,
-   na experiência do cliente e na forma como cada marca passou a vender.
-3. **Sorteio de uma mudança total de e-commerce** — ao vivo, um participante da call é sorteado
-   para ter o e-commerce inteiro reformulado. Só quem está na transmissão concorre.
-4. **Mega desconto exclusivo para criar sua loja** — condição especial para subir sua loja com a
-   Unbox, apresentada e liberada apenas para quem participar do webinar.
+> **Sua vaga leva 20 segundos**
+> Sem custo. O link vai para o seu e-mail e você recebe um lembrete no WhatsApp antes de começar.
 
-## 5. Palestrante
+Obrigatórios: nome, e-mail, WhatsApp. Opcionais: site/@ da loja, faturamento mensal.
+
+## 6. O que você vai descobrir
+
+1. **A IA construindo uma loja na sua frente** — layout, conteúdo e jornada de compra personalizados.
+2. **Antes e depois de marcas reais** — Zétona, Oddie e Oto, com o que mudou em cada uma.
+3. **Sorteio de uma mudança total de e-commerce** — ao vivo, só para quem está na call.
+4. **[X]% de desconto exclusivo** para criar sua loja, liberado apenas na transmissão.
+
+## 7. Palestrante
 
 **Bruno Pereira — Fundador da Unbox**
 
-> Bruno é fundador da Unbox, plataforma que permite subir uma loja totalmente personalizada em
-> menos de 2 horas e operar e-commerces com um time de agentes de IA.
+> Bruno já colocou **[N] lojas** no ar com IA. Na call ele abre a ferramenta, monta uma loja do zero
+> na sua frente e responde suas perguntas ao vivo — sem slide teórico.
 >
-> A Unbox lidera o tema **AI Commerce no Brasil** com uma plataforma focada em marcas D2C — e é
-> essa tecnologia que ele vai abrir ao vivo, sem slide teórico: criando loja, mostrando cases e
-> respondendo perguntas na hora.
+> É fundador da Unbox, plataforma de AI Commerce para marcas D2C que sobe uma loja totalmente
+> personalizada em menos de 2 horas e opera e-commerces com um time de agentes de IA.
+
+## 8. É para você se…
+
+- Você já vende online e sua loja parece com a do concorrente que vende o mesmo produto.
+- Você vai lançar e não quer travar 3 meses esperando desenvolvimento para começar a vender.
+- Você vende direto ao consumidor e cansou de competir só no preço e no orçamento de mídia.
+
+## 9. Sorteio
+
+> **Um dos participantes sai daqui com a loja inteira refeita.**
+> Sorteio ao vivo no dia 8. Quem não está na call não concorre.
+
+## 10. CTA final
+
+> Faltam **[N] dias** (contador automático)
+> **No dia 8 você vê a loja sendo construída. Em setembro, pode ser a sua.**
+> É ao vivo, às 19h. A demonstração, o sorteio e o desconto acontecem todos na transmissão.
+
+## Pendências de conteúdo
+
+| # | O que falta | Onde aparece |
+|---|---|---|
+| 1 | **% do desconto** | bullet do hero, card 04 do conteúdo, bloco do sorteio |
+| 2 | **Métrica de cada case** (Zétona, Oddie, Oto) | seção de cases |
+| 3 | **Prints antes/depois** dos 3 cases | seção de cases |
+| 4 | **Quantas lojas o Bruno já subiu com IA** | mini-card do hero e seção do palestrante |
+| 5 | **Confirmar a política de gravação** | FAQ |
 
 ## Dados do evento
 

@@ -55,7 +55,19 @@ Os arquivos oficiais já estão aplicados (vindos do Drive, pasta *Revi Marketin
 
 Para trocar qualquer um, basta substituir o arquivo mantendo o nome.
 
-### 3. Links legais e pixels
+### 3. Dados pendentes (marcados em amarelo na página)
+
+Os trechos com fundo amarelo tracejado (`.todo`) são placeholders de dados que ainda não existem.
+Eles são propositalmente visíveis para não irem ao ar por engano. Busque em `index.html` por `class="todo"`:
+
+1. `[X]%` — percentual do desconto (3 ocorrências)
+2. `[+X% de conversão]` / `[métrica real]` — um número por case
+3. `[N]` — quantas lojas o Bruno já subiu com IA (2 ocorrências)
+
+Faltam também os **prints antes/depois** dos cases (`assets/case-zetona.jpg`, `case-oddie.jpg`,
+`case-oto.jpg`) e a **confirmação da política de gravação** citada no FAQ.
+
+### 4. Links legais e pixels
 
 - Política de Privacidade: dois `href="#"` (formulário e rodapé).
 - Não há GTM/pixel instalado. Adicione antes do `</body>` conforme a stack de mídia.
