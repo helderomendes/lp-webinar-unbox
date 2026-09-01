@@ -448,6 +448,12 @@ main,header,footer{position:relative;z-index:1}
 .field-row{display:grid;gap:13px}
 @media(min-width:520px){.field-row{grid-template-columns:1fr 1fr}}
 
+.form-error{
+  margin-top:12px;padding:11px 14px;border-radius:10px;
+  background:rgba(255,92,122,.12);border:1px solid rgba(255,92,122,.45);
+  color:#FFB3C1;font-size:13.5px;line-height:1.45;
+}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .form-legal{margin-top:14px;font-size:12px;line-height:1.5;color:var(--muted-2);text-align:center}
 .form-legal a{color:var(--blue-soft)}
 
@@ -1098,10 +1104,21 @@ body.js-reveal .reveal.is-in{
                 </div>
               </div>
 
+              <!-- armadilha de bot: fica fora da tela e nenhum humano preenche -->
+              <div class="hp" aria-hidden="true">
+                <label for="f-hp">Não preencha este campo</label>
+                <input id="f-hp" name="website_confirm" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
               <button type="submit" class="btn btn--primary btn--block" id="submitBtn">
                 Quero minha vaga
               </button>
               <span class="btn-note">De graça — e o sorteio e o desconto são só pra quem assiste ao vivo</span>
+
+              <p class="form-error" id="formError" hidden role="alert">
+                Não conseguimos registrar sua inscrição agora. Tente de novo em alguns
+                segundos — se continuar, chame a gente no WhatsApp.
+              </p>
 
               <p class="form-legal">
                 Ao se inscrever, você concorda em receber comunicações sobre o evento e aceita a
@@ -1501,16 +1518,16 @@ var CONFIG = {
   // Data/hora do webinar (ISO com fuso de Brasília)
   eventDate: '2026-09-08T19:00:00-03:00',
 
-  // Endpoint do formulário. Deixe vazio ('') para o modo demonstração,
-  // que apenas exibe a tela de confirmação sem enviar dados.
-  // Ex. RD Station: 'https://cta-redirect.rdstation.com/v2/conversions'
-  formEndpoint: '',
+  // A inscrição vai para a função serverless /api/lead, que assina a chamada
+  // com o secret e repassa ao webhook da Revi. O secret fica no servidor:
+  // no navegador ele seria público. Vazio ('') = modo demonstração.
+  leadEndpoint: '/api/lead',
 
-  // Página de obrigado (usada quando formEndpoint está configurado)
+  // Página de obrigado. Vazio = mostra a confirmação na própria página.
   thankYouUrl: '',
 
-  // Nomes dos eventos de conversão
-  leadEvent: 'webinar_lead',        // inscrição concluída
+  // Nomes dos eventos enviados ao dataLayer
+  leadEvent: 'webinar_lead',            // inscrição concluída
   formStartEvent: 'webinar_form_start'  // começou a preencher (mede abandono)
 };
 
@@ -1560,32 +1577,30 @@ var CONFIG = {
     }
   });
 
-  /* ---------- Eventos de conversão ----------
-     Dispara em três frentes, para não depender de uma só integração:
-       1. dataLayer  — lido por GTM / GA4 / Meta via GTM
-       2. evento de DOM 'revi:lead' — qualquer script da página pode escutar
-       3. API da Revi — chamada só se o loader tiver exposto o objeto global
-     Tudo dentro de try/catch: rastreamento nunca pode quebrar a inscrição. */
+  /* ---------- Eventos para a camada de dados (GTM / GA4) ----------
+     A captura do lead é feita pelo webhook; isto aqui é só medição.
+     Em try/catch: medição nunca pode quebrar a inscrição. */
   function track(nomeDoEvento, dados) {
     dados = dados || {};
     try {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push(Object.assign({ event: nomeDoEvento }, dados));
-
-      document.dispatchEvent(new CustomEvent('revi:' + nomeDoEvento, { detail: dados }));
-
-      var revi = window.revi || window.Revi || window.reviTracker;
-      if (revi) {
-        if (dados.email && typeof revi.identify === 'function') {
-          revi.identify({ name: dados.name, email: dados.email, phone: dados.phone });
-        }
-        if (typeof revi.track === 'function') revi.track(nomeDoEvento, dados);
-        else if (typeof revi.trackEvent === 'function') revi.trackEvent(nomeDoEvento, dados);
-        else if (typeof revi === 'function') revi(nomeDoEvento, dados);
-      }
+      document.dispatchEvent(new CustomEvent(nomeDoEvento, { detail: dados }));
     } catch (e) {
-      if (window.console && console.warn) console.warn('[tracking] falhou:', e);
+      if (window.console && console.warn) console.warn('[medição] falhou:', e);
     }
+  }
+
+  /* ---------- Origem do tráfego: vai junto com o lead ---------- */
+  function origem() {
+    var q = new URLSearchParams(window.location.search);
+    var o = {
+      url: window.location.href,
+      referrer: document.referrer || null
+    };
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid']
+      .forEach(function (k) { if (q.get(k)) o[k] = q.get(k); });
+    return o;
   }
 
   // dispara uma única vez, quando a pessoa toca no primeiro campo
@@ -1637,37 +1652,57 @@ var CONFIG = {
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando...';
+    esconderFalha();
+
+    var lead = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim().toLowerCase(),
+      phone: phone.value.replace(/\D/g, ''),
+      store: form.cf_loja.value.trim(),
+      revenue: form.cf_faturamento_mensal.value,
+      website_confirm: form.website_confirm.value,   // armadilha de bot
+      source: origem()
+    };
 
     track(CONFIG.leadEvent, {
       form: 'inscricao_webinar',
       webinar: 'ai-commerce-hiper-customizacao-2026-09-08',
-      name: form.name.value.trim(),
-      email: form.email.value.trim().toLowerCase(),
-      phone: phone.value.replace(/\D/g, ''),
-      loja: form.cf_loja.value.trim(),
-      faturamento: form.cf_faturamento_mensal.value
+      name: lead.name, email: lead.email, phone: lead.phone,
+      loja: lead.store, faturamento: lead.revenue
     });
 
-    if (CONFIG.formEndpoint) {
-      // Envio real: posta o formulário para o endpoint configurado.
-      form.action = CONFIG.formEndpoint;
-      form.method = 'POST';
-      if (CONFIG.thankYouUrl && !form.querySelector('[name="redirect_to"]')) {
-        var hidden = document.createElement('input');
-        hidden.type = 'hidden';
-        hidden.name = 'redirect_to';
-        hidden.value = CONFIG.thankYouUrl;
-        form.appendChild(hidden);
-      }
-      form.submit();
+    if (!CONFIG.leadEndpoint) {   // modo demonstração
+      concluir();
       return;
     }
 
-    // Modo demonstração: confirma na tela sem enviar dados.
+    fetch(CONFIG.leadEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(lead)
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        concluir();
+      })
+      .catch(function (e) {
+        if (window.console) console.error('[inscrição] falhou:', e);
+        mostrarFalha();
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Quero minha vaga';
+      });
+  });
+
+  function concluir() {
+    if (CONFIG.thankYouUrl) { window.location.href = CONFIG.thankYouUrl; return; }
     card.classList.add('is-done');
     success.classList.add('is-on');
     card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
+  }
+
+  var avisoFalha = document.getElementById('formError');
+  function mostrarFalha() { avisoFalha.hidden = false; }
+  function esconderFalha() { avisoFalha.hidden = true; }
 
   // Limpa o erro assim que o usuário corrige o campo
   form.addEventListener('input', function (e) {

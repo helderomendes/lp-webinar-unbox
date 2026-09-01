@@ -23,26 +23,52 @@ Segue a mesma lógica de uma LP de webinar do RD Station Landing Pages:
 
 ## O que ajustar antes de publicar
 
-### 1. Formulário (obrigatório)
+### 1. Formulário e webhook (obrigatório)
 
-No bloco `CONFIG`, no fim do `index.html`:
+A inscrição segue este caminho:
 
-```js
-var CONFIG = {
-  eventDate: '2026-09-08T19:00:00-03:00',   // data/hora do webinar
-  formEndpoint: '',                          // endpoint do form (vazio = modo demo)
-  thankYouUrl: ''                            // página de obrigado
-};
+```
+formulário → POST /api/lead (função serverless) → webhook da Revi
 ```
 
-- `formEndpoint` **vazio** = modo demonstração: valida os campos e mostra a tela de confirmação
-  **sem enviar dados a lugar nenhum**. Bom para revisar a página, não serve para captar lead.
-- Para RD Station: `https://cta-redirect.rdstation.com/v2/conversions` + adicionar os hidden
-  `token_rdstation` e `conversion_identifier` dentro do `<form id="leadForm">`.
-- Para HubSpot/outro CRM: aponte `formEndpoint` para o endpoint correspondente ou troque o
-  bloco de submit por embed do próprio CRM.
+**Por que não chamar o webhook direto do navegador:** o secret `x-revi-secret` ficaria visível no
+código-fonte da página para qualquer visitante, e o header customizado dispararia um preflight de
+CORS que o webhook pode recusar. A função `api/lead.js` resolve os dois: guarda o secret no
+servidor e recebe uma chamada de mesma origem.
 
-Campos enviados: `name`, `email`, `personal_phone`, `cf_loja`, `cf_faturamento_mensal`.
+**Configure no Vercel** (Settings → Environment Variables):
+
+| Variável | Valor |
+|---|---|
+| `REVI_WEBHOOK_SECRET` | o secret do header `x-revi-secret` |
+| `REVI_WEBHOOK_URL` | opcional, só se a URL do listener mudar |
+
+Sem a variável, o envio continua funcionando — mas sem autenticação, limitado a 60 requisições
+por minuto pela Revi.
+
+**O que a função faz antes de repassar:**
+
+- valida nome, e-mail e telefone (retorna `422` sem chamar o webhook se algo estiver errado)
+- descarta bots pelo campo-armadilha `website_confirm`, invisível no formulário
+- normaliza e-mail para minúsculo e telefone para só dígitos
+- monta o payload final:
+
+```json
+{
+  "event": "webinar_lead",
+  "webinar": { "slug": "...", "nome": "...", "data": "2026-09-08T19:00:00-03:00" },
+  "lead": { "name": "", "email": "", "phone": "", "store": null, "revenue": null },
+  "source": { "url": "", "referrer": "", "utm_source": "", "utm_campaign": "..." },
+  "submitted_at": "ISO 8601"
+}
+```
+
+UTMs, `gclid` e `fbclid` da URL entram sozinhos em `source`, então dá para medir de onde veio
+cada inscrição.
+
+**Se o envio falhar**, o formulário mostra um aviso vermelho, reabilita o botão e não exibe a tela
+de confirmação — o visitante sabe que precisa tentar de novo. Em `CONFIG`, deixar `leadEndpoint`
+vazio volta ao modo demonstração, que só mostra a confirmação sem enviar nada.
 
 ### 2. Logos e foto
 
@@ -78,7 +104,7 @@ Eles são propositalmente visíveis para não irem ao ar por engano. Busque em `
 Faltam também os **prints antes/depois** dos cases (`assets/case-zetona.jpg`, `case-oddie.jpg`,
 `case-oto.jpg`) e a **confirmação da política de gravação** citada no FAQ.
 
-### 5. Rastreamento de leads (Revi)
+### 5. Medição (GTM / GA4)
 
 O loader da Revi está instalado no `<head>` com `defer`:
 
@@ -86,14 +112,8 @@ O loader da Revi está instalado no `<head>` com `defer`:
 <script defer src="https://df81sh4kfcckj.cloudfront.net/revi-loader.js?siteKey=..."></script>
 ```
 
-Quando a inscrição é validada, a função `track()` dispara o evento em **três frentes**, para não
-depender de uma integração só:
-
-| Frente | O que acontece |
-|---|---|
-| `window.dataLayer` | `dataLayer.push({event: 'webinar_lead', ...})` — lido por GTM, GA4 e Meta via GTM |
-| Evento de DOM | `document.dispatchEvent(new CustomEvent('revi:webinar_lead', {detail}))` |
-| API da Revi | chama `revi.identify({name,email,phone})` e `revi.track('webinar_lead', dados)` **se** o loader tiver exposto `window.revi` (ou `Revi` / `reviTracker`) |
+A captura do lead é do webhook. O `track()` é só medição, empurrando para `window.dataLayer`
+(lido por GTM, GA4 e Meta via GTM) e disparando um `CustomEvent` de mesmo nome no documento.
 
 Dois eventos são emitidos:
 
@@ -103,10 +123,6 @@ Dois eventos são emitidos:
 
 Os nomes ficam em `CONFIG.leadEvent` e `CONFIG.formStartEvent`. Todo o bloco roda dentro de
 `try/catch`: se o rastreamento falhar, a inscrição acontece do mesmo jeito.
-
-> **Confirme com a Revi** o nome real do objeto global e do método de evento. O código cobre
-> `revi.track`, `revi.trackEvent` e `revi(nome, dados)`; se a API for outra, ajuste o bloco
-> `function track()` — o dataLayer e o evento de DOM continuam funcionando de qualquer forma.
 
 ### 6. Links legais e pixels
 
