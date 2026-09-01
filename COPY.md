@@ -64,7 +64,7 @@ Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, 
 > ## Três marcas, três categorias, a mesma virada.
 
 - **Oddie Supply** · alimentos funcionais — energia e hidratação em pó pra quem treina.
-- **Pamela Concept** · cabelos premium — linha de cuidado capilar de alto padrão, salão e casa.
+- **Pamela Concept** · cuidado capilar — queda, caspa, crescimento, brilho, densidade e fios quebradiços, com fórmulas para todos os tipos de cabelo feminino.
 - **Badia** · temperos e especiarias — catálogo grande virando jornada simples de comprar.
 
 ## Palestrantes
@@ -113,9 +113,8 @@ Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, 
 |---|---|---|
 | 1 | **Métrica de cada case** (Oddie, Pamela Concept, Badia) | seção de cases |
 | 2 | **Prints antes/depois** dos 3 cases | seção de cases |
-| 3 | **Logos da Pamela Concept e da Badia** (SVG) — hoje estão como wordmark | seção de cases |
 | 4 | **Confirmar a política de gravação** | FAQ e CTA final |
 | 5 | **Endpoint do formulário** (RD Station ou HubSpot) | `CONFIG.formEndpoint` |
 
 Resolvidos: desconto de **30%**, **+80 lojas criadas com IA** (redação escolhida para não
-afirmar que todas estão no ar).
+afirmar que todas estão no ar), logos dos três cases e foto do Bruno Romera em alta.
