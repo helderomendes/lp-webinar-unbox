@@ -55,7 +55,18 @@ Os arquivos oficiais já estão aplicados (vindos do Drive, pasta *Revi Marketin
 
 Para trocar qualquer um, basta substituir o arquivo mantendo o nome.
 
-### 3. Dados pendentes (marcados em amarelo na página)
+### 3. SEO — trocar o domínio
+
+Antes de publicar, substitua `https://SEU-DOMINIO.com.br/webinar-ai-commerce` (4 ocorrências:
+canonical, og:url e os dois blocos de dados estruturados) pela URL final. A página já traz:
+
+- `<title>` com o tema completo e meta description de ~150 caracteres
+- canonical, `og:url`, `og:site_name`, `og:locale` e `robots` com `max-image-preview:large`
+- **JSON-LD de Event** (data, formato online, organizadores, palestrantes, ingresso gratuito)
+- **JSON-LD de FAQPage** com as 7 perguntas, elegível a rich result no Google
+- um único `<h1>`, `<h2>` por seção e `alt` em todas as imagens
+
+### 4. Dados pendentes (marcados em amarelo na página)
 
 Os trechos com fundo amarelo tracejado (`.todo`) são placeholders de dados que ainda não existem.
 Eles são propositalmente visíveis para não irem ao ar por engano. Busque em `index.html` por `class="todo"`:
@@ -67,7 +78,7 @@ Eles são propositalmente visíveis para não irem ao ar por engano. Busque em `
 Faltam também os **prints antes/depois** dos cases (`assets/case-zetona.jpg`, `case-oddie.jpg`,
 `case-oto.jpg`) e a **confirmação da política de gravação** citada no FAQ.
 
-### 4. Links legais e pixels
+### 5. Links legais e pixels
 
 - Política de Privacidade: dois `href="#"` (formulário e rodapé).
 - Não há GTM/pixel instalado. Adicione antes do `</body>` conforme a stack de mídia.
