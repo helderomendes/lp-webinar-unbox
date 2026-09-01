@@ -492,9 +492,31 @@ main,header,footer{position:relative;z-index:1}
   transition:transform .2s ease;
 }
 .offer-bar a:hover{transform:scale(1.04)}
-@media(max-width:700px){
+/* Desktop: uma linha centralizada, sem movimento. A cópia do letreiro some. */
+.ticker{min-width:0;flex:0 1 auto}
+.ticker-track{display:flex;justify-content:center}
+.ticker-item + .ticker-item{display:none}
+.offer-bar .nb b{font-weight:800;font-size:15px}
+
+/* Mobile: vira letreiro rodando, o que deixa o texto maior e legível
+   sem quebrar em três linhas. */
+@media(max-width:760px){
   .offer-bar a{display:none}
-  .offer-bar p{font-size:12.5px}
+  .offer-bar .wrap{padding:10px 0;display:block}
+  .ticker{width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .ticker-track{width:max-content;justify-content:flex-start;animation:tickerRun 22s linear infinite}
+  .ticker-item{white-space:nowrap;padding-right:48px;font-size:15px}
+  .ticker-item + .ticker-item{display:block}
+  .offer-bar .nb b{font-size:18px}
+}
+@keyframes tickerRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Sem movimento: volta a ser texto normal, quebrando em linhas */
+@media(prefers-reduced-motion:reduce){
+  .ticker{overflow:visible;-webkit-mask-image:none;mask-image:none}
+  .ticker-track{width:auto;justify-content:center}
+  .ticker-item{white-space:normal;padding-right:0}
+  .ticker-item + .ticker-item{display:none}
 }
 
 /* Faixa de oferta cheia, logo abaixo do hero */
@@ -900,13 +922,25 @@ body.js-reveal .reveal.is-in{
 <!-- ===================== FAIXA DE OFERTA (TOPO) ===================== -->
 <div class="offer-bar offer-grad">
   <div class="wrap">
-    <p>
-      Sorteio ao vivo de um e-commerce inteiro refeito
-      <span class="sep">·</span>
-      <span class="nb">30% de desconto</span> pra montar a sua
-      <span class="sep">·</span>
-      só para quem assistir
-    </p>
+    <div class="ticker">
+      <div class="ticker-track">
+        <p class="ticker-item">
+          Sorteio ao vivo de um e-commerce inteiro refeito
+          <span class="sep">·</span>
+          <span class="nb"><b>30%</b> de desconto</span> pra montar a sua
+          <span class="sep">·</span>
+          só para quem assistir
+        </p>
+        <!-- cópia only para o loop parecer contínuo; leitores de tela ignoram -->
+        <p class="ticker-item" aria-hidden="true">
+          Sorteio ao vivo de um e-commerce inteiro refeito
+          <span class="sep">·</span>
+          <span class="nb"><b>30%</b> de desconto</span> pra montar a sua
+          <span class="sep">·</span>
+          só para quem assistir
+        </p>
+      </div>
+    </div>
     <a href="#inscricao">Quero minha vaga</a>
   </div>
 </div>
