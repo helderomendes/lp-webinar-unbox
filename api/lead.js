@@ -16,6 +16,30 @@ const WEBHOOK_PADRAO =
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
+/**
+ * Deixa o telefone só com DDD + número, do jeito que a Revi espera.
+ * Autopreenchimento manda "+55 11 98765-4321"; alguns navegadores mandam
+ * "011 98765-4321". Os dois viram "11987654321".
+ *
+ * O 55 da frente só é cortado quando sobram dígitos demais para um número
+ * local — 55 também é DDD válido (Santa Maria/RS).
+ */
+function normalizaTelefone(valor) {
+  let d = String(valor || '').replace(/\D/g, '');
+  if (d.startsWith('0055')) d = d.slice(4);
+  if (d.length > 11 && d.startsWith('55')) d = d.slice(2);
+  if (d.length > 10 && d.startsWith('0')) d = d.slice(1);
+  return d.slice(0, 11);
+}
+
+/** Fixo tem 10 dígitos; celular tem 11 e o terceiro é sempre 9. DDD começa em 11. */
+function telefoneValido(d) {
+  if (d.length !== 10 && d.length !== 11) return false;
+  if (Number(d.slice(0, 2)) < 11) return false;
+  if (d.length === 11 && d[2] !== '9') return false;
+  return true;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -31,9 +55,9 @@ export default async function handler(req, res) {
 
   const nome = String(dados.name || '').trim();
   const email = String(dados.email || '').trim().toLowerCase();
-  const telefone = String(dados.phone || '').replace(/\D/g, '');
+  const telefone = normalizaTelefone(dados.phone);
 
-  if (nome.length < 2 || !EMAIL.test(email) || telefone.length < 10) {
+  if (nome.length < 2 || !EMAIL.test(email) || !telefoneValido(telefone)) {
     return res.status(422).json({ ok: false, erro: 'dados_invalidos' });
   }
 

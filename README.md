@@ -49,6 +49,11 @@ por minuto pela Revi.
 **O que a função faz antes de repassar:**
 
 - valida nome, e-mail e telefone (retorna `422` sem chamar o webhook se algo estiver errado)
+- **normaliza o telefone**: `+55`, `0055` e o `0` antes do DDD são removidos, então
+  `+55 11 98765-4321` e `011 98765-4321` chegam iguais, como `11987654321`. O `55` só é
+  tratado como DDI quando sobram dígitos demais para um número local — 55 também é DDD
+  válido (Santa Maria/RS). A validação exige DDD a partir de 11, 10 dígitos para fixo e
+  11 para celular com o 9 na terceira posição
 - descarta bots pelo campo-armadilha `website_confirm`, invisível no formulário
 - normaliza e-mail para minúsculo e telefone para só dígitos
 - monta o payload final:

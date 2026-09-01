@@ -1083,7 +1083,7 @@ body.js-reveal .reveal.is-in{
               <div class="field">
                 <label for="f-phone">WhatsApp*</label>
                 <input id="f-phone" name="personal_phone" type="tel" placeholder="(11) 90000-0000" autocomplete="tel" inputmode="tel" required>
-                <span class="err">Informe um WhatsApp com DDD.</span>
+                <span class="err">Informe um WhatsApp válido com DDD.</span>
               </div>
 
               <div class="field-row">
@@ -1564,18 +1564,46 @@ var CONFIG = {
   tickCountdown();
   setInterval(tickCountdown, 1000);
 
-  /* ---------- Máscara de telefone (BR) ---------- */
+  /* ---------- Telefone: normalização e máscara (BR) ----------
+     Autopreenchimento costuma devolver "+55 11 98765-4321". Sem tratar, a
+     máscara pegaria os 11 primeiros dígitos e escreveria "(55) 11987-6543".
+     Aqui o DDI sai antes de qualquer formatação.
+
+     Cuidado: 55 também é DDD válido (Santa Maria/RS). Por isso o 55 da frente
+     só é removido quando sobram dígitos demais para um número local. */
   var phone = document.getElementById('f-phone');
-  phone.addEventListener('input', function () {
-    var v = phone.value.replace(/\D/g, '').slice(0, 11);
-    if (v.length > 6) {
-      phone.value = '(' + v.slice(0, 2) + ') ' + v.slice(2, v.length > 10 ? 7 : 6) + '-' + v.slice(v.length > 10 ? 7 : 6);
-    } else if (v.length > 2) {
-      phone.value = '(' + v.slice(0, 2) + ') ' + v.slice(2);
-    } else {
-      phone.value = v;
-    }
-  });
+
+  function digitosDoTelefone(valor) {
+    var d = String(valor || '').replace(/\D/g, '');
+    if (d.indexOf('0055') === 0) d = d.slice(4);                  // 00 + DDI
+    if (d.length > 11 && d.indexOf('55') === 0) d = d.slice(2);   // DDI +55
+    if (d.length > 10 && d.charAt(0) === '0') d = d.slice(1);     // 0 antes do DDD (inclui fixo de 8 dígitos)
+    return d.slice(0, 11);
+  }
+
+  // Fixo tem 10 dígitos, celular tem 11 e o terceiro é sempre 9. DDD começa em 11.
+  function telefoneValido(d) {
+    if (d.length !== 10 && d.length !== 11) return false;
+    if (Number(d.slice(0, 2)) < 11) return false;
+    if (d.length === 11 && d.charAt(2) !== '9') return false;
+    return true;
+  }
+
+  function formatarTelefone(valor) {
+    var d = digitosDoTelefone(valor);
+    if (d.length <= 2) return d;
+    var corte = d.length > 10 ? 7 : 6;
+    if (d.length <= 6) return '(' + d.slice(0, 2) + ') ' + d.slice(2);
+    return '(' + d.slice(0, 2) + ') ' + d.slice(2, corte) + '-' + d.slice(corte);
+  }
+
+  function aplicarMascara() { phone.value = formatarTelefone(phone.value); }
+
+  phone.addEventListener('input', aplicarMascara);
+  // autopreenchimento nem sempre dispara 'input': cobre os dois outros momentos
+  phone.addEventListener('change', aplicarMascara);
+  phone.addEventListener('blur', aplicarMascara);
+  setTimeout(function () { if (phone.value) aplicarMascara(); }, 400);
 
   /* ---------- Eventos para a camada de dados (GTM / GA4) ----------
      A captura do lead é feita pelo webhook; isto aqui é só medição.
@@ -1636,7 +1664,7 @@ var CONFIG = {
     var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
     setError(email, !emailOk); ok = ok && emailOk;
 
-    var phoneOk = phone.value.replace(/\D/g, '').length >= 10;
+    var phoneOk = telefoneValido(digitosDoTelefone(phone.value));
     setError(phone, !phoneOk); ok = ok && phoneOk;
 
     return ok;
@@ -1657,7 +1685,7 @@ var CONFIG = {
     var lead = {
       name: form.name.value.trim(),
       email: form.email.value.trim().toLowerCase(),
-      phone: phone.value.replace(/\D/g, ''),
+      phone: digitosDoTelefone(phone.value),
       store: form.cf_loja.value.trim(),
       revenue: form.cf_faturamento_mensal.value,
       website_confirm: form.website_confirm.value,   // armadilha de bot
