@@ -67,13 +67,29 @@ Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, 
 - **Oddie Supply** · alimentos funcionais — energia e hidratação em pó pra quem treina.
 - **OTO** · cuidado masculino — shampoo e condicionador com perfume assinado.
 
-## Palestrante
+## Palestrantes
+
+**Bruno Pereira — Fundador da Unbox** · quem monta a loja ao vivo
 
 > **Bruno já colocou [N] lojas no ar com IA** — e não vai te mostrar slide nenhum. Ele abre a
 > ferramenta, monta a loja na sua frente e responde o que você perguntar, na hora.
 >
 > É o fundador da Unbox, a plataforma de AI Commerce que levanta uma loja totalmente personalizada
 > em menos de duas horas e ainda deixa um time de agentes de IA tocando a operação.
+
+**Bruno Romera — Head de Parcerias da Revi** · quem conduz a conversa
+
+> **Bruno Romera é executivo de tecnologia e e-commerce** e hoje lidera as parcerias da Revi.
+> Passa os dias construindo alianças estratégicas e vendo, por dentro, o que faz uma operação
+> digital crescer de verdade.
+>
+> É ele quem puxa a conversa no webinar, traduz a demonstração para a sua realidade de loja e leva
+> as perguntas da audiência para o Bruno Pereira responder ao vivo.
+
+## Faixa de oferta (topo da página)
+
+> Sorteio ao vivo de um e-commerce inteiro refeito · **[X]% de desconto** pra montar a sua ·
+> só para quem assistir — **Quero minha vaga**
 
 ## É para você se…
 

@@ -253,18 +253,46 @@ main,header,footer{position:relative;z-index:1}
 }
 .tick svg{width:12px;height:12px}
 
-.hero-speaker{
-  display:flex;align-items:center;gap:14px;margin-top:32px;
-  padding:14px 18px 14px 14px;border-radius:16px;
-  background:rgba(255,255,255,.035);border:1px solid var(--line);
-  max-width:430px;
+.hero-people{
+  display:flex;flex-wrap:wrap;gap:18px;
+  margin-top:26px;margin-bottom:4px;padding:20px;
+  border-radius:20px;
+  background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+  border:1px solid var(--line-strong);
+  max-width:560px;
 }
-.avatar{
-  width:52px;height:52px;border-radius:14px;flex:none;object-fit:cover;
-  background:var(--neon);
-  display:grid;place-items:center;
-  font-family:"Space Grotesk",sans-serif;font-weight:700;color:#04060E;
+.person{display:flex;gap:14px;align-items:center;flex:1 1 220px}
+.person img{
+  width:84px;height:84px;flex:none;border-radius:18px;object-fit:cover;
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 0 0 3px rgba(37,245,138,.16),0 12px 28px -12px rgba(0,0,0,.9);
 }
+.person strong{
+  display:block;font-family:"Space Grotesk",sans-serif;font-weight:700;
+  font-size:17px;line-height:1.2;margin-bottom:4px;
+}
+.person span{display:block;font-size:13px;line-height:1.35;color:var(--muted)}
+.person span b{color:var(--green);font-weight:600}
+.hero-stat{
+  flex:1 1 100%;display:flex;align-items:center;gap:14px;
+  padding-top:16px;border-top:1px solid var(--line);
+}
+.hero-stat .n{
+  font-family:"Space Grotesk",sans-serif;font-size:30px;font-weight:700;line-height:1;
+  background:var(--neon);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-stat p{font-size:13.5px;color:var(--muted);line-height:1.35}
+@media(max-width:520px){
+  .person img{width:72px;height:72px}
+  .person{flex:1 1 100%}
+}
+
+.avatars{display:flex;flex:none}
+.avatars img{
+  width:46px;height:46px;border-radius:50%;object-fit:cover;
+  border:2px solid #0A1030;background:#0A1030;
+}
+.avatars img + img{margin-left:-14px}
 .hero-speaker span{display:block;font-size:14px;color:var(--muted)}
 .hero-speaker strong{font-size:16px}
 
@@ -336,20 +364,61 @@ main,header,footer{position:relative;z-index:1}
 .form-success h3{margin-bottom:10px}
 .form-success p{color:var(--muted);font-size:15px}
 
-/* ============ 7. FAIXA DE DESTAQUES ============ */
-.strip{
-  border-block:1px solid var(--line);
-  background:linear-gradient(100deg,rgba(37,245,138,.10),rgba(47,107,255,.10) 50%,rgba(168,85,247,.12));
+/* ============ 7. FAIXAS DE OFERTA ============ */
+
+/* Gradiente vivo da paleta, em movimento lento */
+.offer-grad{
+  background:linear-gradient(100deg,#25F58A,#35C6FF 28%,#4B7BFF 54%,#A855F7 78%,#E255F7);
+  background-size:220% 100%;
+  animation:offerFlow 14s linear infinite;
+  color:#04060E;
 }
-.strip .wrap{display:grid;gap:18px;padding-block:26px}
-@media(min-width:860px){.strip .wrap{grid-template-columns:1fr 1fr;gap:32px}}
-.strip-item{display:flex;gap:14px;align-items:flex-start}
+@keyframes offerFlow{from{background-position:0 0}to{background-position:220% 0}}
+
+/* Barra fina no topo da página, acima do header */
+.offer-bar{position:relative;z-index:80}
+.offer-bar .wrap{
+  display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
+  padding:11px 22px;text-align:center;
+}
+.offer-bar p{
+  font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:13.5px;
+  letter-spacing:.01em;line-height:1.35;
+}
+.offer-bar .sep{opacity:.45;font-weight:400}
+.offer-bar a{
+  font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:12.5px;
+  text-transform:uppercase;letter-spacing:.06em;text-decoration:none;
+  padding:7px 14px;border-radius:999px;
+  background:rgba(4,6,14,.88);color:#EDF2FF;white-space:nowrap;
+  transition:transform .2s ease;
+}
+.offer-bar a:hover{transform:scale(1.04)}
+@media(max-width:700px){
+  .offer-bar a{display:none}
+  .offer-bar p{font-size:12.5px}
+}
+
+/* Faixa de oferta cheia, logo abaixo do hero */
+.strip{border-block:1px solid rgba(4,6,14,.25)}
+.strip .wrap{display:grid;gap:22px;padding-block:30px}
+@media(min-width:860px){.strip .wrap{grid-template-columns:1fr 1fr;gap:36px}}
+.strip-item{display:flex;gap:16px;align-items:flex-start}
 .strip-ic{
-  flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
-  background:rgba(255,255,255,.07);border:1px solid var(--line-strong);
+  flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
+  background:rgba(4,6,14,.86);border:0;
 }
-.strip-item strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:17px;margin-bottom:3px}
-.strip-item span{font-size:14.5px;color:var(--muted)}
+.strip-item strong{
+  display:block;font-family:"Space Grotesk",sans-serif;font-size:19px;
+  font-weight:700;margin-bottom:4px;color:#04060E;
+}
+.strip-item span{font-size:15px;color:rgba(4,6,14,.78);line-height:1.45}
+.strip .todo{
+  background:rgba(4,6,14,.14);border-color:rgba(4,6,14,.55);color:#04060E;
+}
+.offer-bar .todo{
+  background:rgba(4,6,14,.14);border-color:rgba(4,6,14,.55);color:#04060E;
+}
 
 /* ============ 8. BLOCOS DE CONTEÚDO ============ */
 .section-head{max-width:720px;margin:0 auto 44px;text-align:center}
@@ -391,30 +460,34 @@ main,header,footer{position:relative;z-index:1}
   color:var(--blue-soft);margin-top:10px;
 }
 
-/* Palestrante */
+/* Palestrantes */
+.speakers{display:grid;gap:20px}
+@media(min-width:900px){.speakers{grid-template-columns:1fr 1fr}}
 .speaker{
-  display:grid;gap:28px;align-items:center;
   border:1px solid var(--line);border-radius:var(--radius-lg);
-  padding:clamp(26px,3.4vw,40px);
+  padding:clamp(24px,3vw,34px);
   background:linear-gradient(150deg,#0B1234,#06091C);
   box-shadow:var(--shadow);
+  display:flex;flex-direction:column;
 }
-@media(min-width:820px){.speaker{grid-template-columns:270px 1fr;gap:40px}}
+.speaker-top{display:flex;align-items:center;gap:18px;margin-bottom:20px}
 .speaker-photo{
-  position:relative;border-radius:22px;overflow:hidden;
-  aspect-ratio:1/1;background:linear-gradient(150deg,#12204F,#0A1030);
+  position:relative;flex:none;width:96px;height:96px;border-radius:20px;overflow:hidden;
+  background:linear-gradient(150deg,#12204F,#0A1030);
   border:1px solid var(--line-strong);
   display:grid;place-items:center;
 }
 .speaker-photo img{width:100%;height:100%;object-fit:cover}
 .speaker-photo .initials{
-  font-family:"Space Grotesk",sans-serif;font-size:64px;font-weight:700;
+  font-family:"Space Grotesk",sans-serif;font-size:34px;font-weight:700;
   background:var(--neon);-webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.speaker-role{color:var(--green);font-weight:600;margin:8px 0 16px;font-size:15px}
-.speaker p{color:var(--muted);font-size:16px}
-.speaker p + p{margin-top:14px}
-.speaker-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.speaker h3{font-size:24px}
+.speaker-role{color:var(--green);font-weight:600;margin-top:6px;font-size:14.5px}
+.speaker-role .co{display:block;color:var(--muted-2);font-weight:500;margin-top:2px}
+.speaker p{color:var(--muted);font-size:15.5px}
+.speaker p + p{margin-top:12px}
+.speaker-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:20px}
 .tag{
   font-size:12.5px;padding:7px 12px;border-radius:999px;
   border:1px solid var(--line-strong);background:rgba(255,255,255,.04);color:var(--muted);
@@ -695,6 +768,20 @@ body.js-reveal .reveal.is-in{
 <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
+<!-- ===================== FAIXA DE OFERTA (TOPO) ===================== -->
+<div class="offer-bar offer-grad">
+  <div class="wrap">
+    <p>
+      Sorteio ao vivo de um e-commerce inteiro refeito
+      <span class="sep">·</span>
+      <span class="todo">[X]%</span> de desconto pra montar a sua
+      <span class="sep">·</span>
+      só para quem assistir
+    </p>
+    <a href="#inscricao">Quero minha vaga</a>
+  </div>
+</div>
+
 <!-- ===================== HEADER (STICKY) ===================== -->
 <header class="site-header">
   <div class="wrap">
@@ -748,19 +835,25 @@ body.js-reveal .reveal.is-in{
         estiver no webinar. É gratuito e é pra quem vende online.
       </p>
 
-      <div class="hero-when">
-        <span class="chip">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#25F58A" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
-          8 de setembro, terça-feira
-        </span>
-        <span class="chip">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8FB2FF" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-          19h (horário de Brasília)
-        </span>
-        <span class="chip">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C79BFF" stroke-width="2" stroke-linecap="round"><path d="M15 10l5-3v10l-5-3v-4Z"/><rect x="3" y="6" width="12" height="12" rx="3"/></svg>
-          Transmissão online
-        </span>
+      <div class="hero-people">
+        <div class="person">
+          <img src="assets/bruno-pereira.jpg" alt="Bruno Pereira, fundador da Unbox" width="84" height="84">
+          <div>
+            <strong>Bruno Pereira</strong>
+            <span><b>Fundador da Unbox</b><br>monta a loja ao vivo</span>
+          </div>
+        </div>
+        <div class="person">
+          <img src="assets/bruno-romera.jpg" alt="Bruno Romera, Head de Parcerias da Revi" width="84" height="84">
+          <div>
+            <strong>Bruno Romera</strong>
+            <span><b>Head de Parcerias da Revi</b><br>conduz a conversa</span>
+          </div>
+        </div>
+        <div class="hero-stat">
+          <span class="n"><span class="todo">[N]</span></span>
+          <p>lojas já no ar com IA — e mais uma vai nascer na sua frente no dia 8.</p>
+        </div>
       </div>
 
       <ul class="hero-bullets">
@@ -778,13 +871,6 @@ body.js-reveal .reveal.is-in{
         </li>
       </ul>
 
-      <div class="hero-speaker">
-        <img class="avatar" src="assets/bruno-pereira.jpg" alt="Bruno Pereira" width="52" height="52">
-        <div>
-          <strong>Bruno Pereira</strong>
-          <span>Fundador da Unbox · <span class="todo">[N]</span> lojas no ar com IA</span>
-        </div>
-      </div>
     </div>
 
     <!-- Coluna direita: formulário de inscrição -->
@@ -870,11 +956,11 @@ body.js-reveal .reveal.is-in{
 </section>
 
 <!-- ===================== FAIXA DE DESTAQUES ===================== -->
-<section class="strip">
+<section class="strip offer-grad">
   <div class="wrap">
     <div class="strip-item">
       <span class="strip-ic" aria-hidden="true">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#25F58A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8h-3.2a3 3 0 1 0-4.8-3 3 3 0 1 0-4.8 3H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1ZM5 14v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6M12 8v13"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#25F58A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8h-3.2a3 3 0 1 0-4.8-3 3 3 0 1 0-4.8 3H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1ZM5 14v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6M12 8v13"/></svg>
       </span>
       <div>
         <strong>Uma loja inteira refeita, sorteada ao vivo</strong>
@@ -883,7 +969,7 @@ body.js-reveal .reveal.is-in{
     </div>
     <div class="strip-item">
       <span class="strip-ic" aria-hidden="true">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C79BFF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5 3.5 14.5a2 2 0 0 0 0 2.8l3.2 3.2a2 2 0 0 0 2.8 0L20.5 9.5V3.5h-6Z"/><circle cx="16.8" cy="7.2" r="1.2" fill="#C79BFF"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C79BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5 3.5 14.5a2 2 0 0 0 0 2.8l3.2 3.2a2 2 0 0 0 2.8 0L20.5 9.5V3.5h-6Z"/><circle cx="16.8" cy="7.2" r="1.2" fill="#C79BFF"/></svg>
       </span>
       <div>
         <strong><span class="todo">[X]%</span> de desconto pra montar a sua</strong>
@@ -1029,20 +1115,25 @@ body.js-reveal .reveal.is-in{
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span> Quem conduz</span>
-      <h2>Conheça o palestrante</h2>
+      <h2>Os dois que vão estar com você</h2>
+      <p class="lead">Um mostra a IA construindo a loja. O outro traz a leitura de quem vê centenas de operações por dentro.</p>
     </div>
 
-    <div class="speaker reveal">
-      <div class="speaker-photo">
-        <!-- Troque por assets/bruno-pereira.jpg. Sem o arquivo, cai no monograma. -->
-        <img src="assets/bruno-pereira.jpg" alt="Bruno Pereira, fundador da Unbox"
-             onerror="this.remove();document.getElementById('brunoInitials').hidden=false">
-        <span class="initials" id="brunoInitials" hidden>BP</span>
-      </div>
+    <div class="speakers">
 
-      <div>
-        <h3>Bruno Pereira</h3>
-        <p class="speaker-role">Fundador da Unbox</p>
+      <div class="speaker reveal">
+        <div class="speaker-top">
+          <div class="speaker-photo">
+            <img src="assets/bruno-pereira.jpg" alt="Bruno Pereira, fundador da Unbox"
+                 onerror="this.remove();this.parentNode.querySelector('.initials').hidden=false">
+            <span class="initials" hidden>BP</span>
+          </div>
+          <div>
+            <h3>Bruno Pereira</h3>
+            <p class="speaker-role">Fundador da Unbox<span class="co">Quem monta a loja ao vivo</span></p>
+          </div>
+        </div>
+
         <p>
           <b style="color:var(--text)">Bruno já colocou <span class="todo">[N]</span> lojas no ar com IA</b>
           — e não vai te mostrar slide nenhum. Ele abre a ferramenta, monta a loja na sua frente e
@@ -1057,9 +1148,38 @@ body.js-reveal .reveal.is-in{
           <span class="tag">AI Commerce</span>
           <span class="tag">Marcas D2C</span>
           <span class="tag">Agentes de IA</span>
-          <span class="tag">Hipercustomização</span>
         </div>
       </div>
+
+      <div class="speaker reveal">
+        <div class="speaker-top">
+          <div class="speaker-photo">
+            <img src="assets/bruno-romera.jpg" alt="Bruno Romera, Head de Parcerias da Revi"
+                 onerror="this.remove();this.parentNode.querySelector('.initials').hidden=false">
+            <span class="initials" hidden>BR</span>
+          </div>
+          <div>
+            <h3>Bruno Romera</h3>
+            <p class="speaker-role">Head de Parcerias da Revi<span class="co">Quem conduz a conversa</span></p>
+          </div>
+        </div>
+
+        <p>
+          <b style="color:var(--text)">Bruno Romera é executivo de tecnologia e e-commerce</b> e hoje
+          lidera as parcerias da Revi. Passa os dias construindo alianças estratégicas e vendo, por
+          dentro, o que faz uma operação digital crescer de verdade.
+        </p>
+        <p>
+          É ele quem puxa a conversa no webinar, traduz a demonstração para a sua realidade de loja e
+          leva as perguntas da audiência para o Bruno Pereira responder ao vivo.
+        </p>
+        <div class="speaker-tags">
+          <span class="tag">Parcerias</span>
+          <span class="tag">Expansão de negócios</span>
+          <span class="tag">Ecossistema digital</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
