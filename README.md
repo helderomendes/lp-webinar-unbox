@@ -83,8 +83,9 @@ Para trocar qualquer um, basta substituir o arquivo mantendo o nome.
 
 ### 3. SEO — trocar o domínio
 
-Antes de publicar, substitua `https://SEU-DOMINIO.com.br/webinar-ai-commerce` (4 ocorrências:
-canonical, og:url e os dois blocos de dados estruturados) pela URL final. A página já traz:
+As tags apontam para `https://lp-webinar-unbox.vercel.app`. Ao ligar um domínio próprio, troque
+essa URL no canonical, no `og:url`, no `og:image` e nos dois blocos de dados estruturados.
+A página traz:
 
 - `<title>` com o tema completo e meta description de ~150 caracteres
 - canonical, `og:url`, `og:site_name`, `og:locale` e `robots` com `max-image-preview:large`
