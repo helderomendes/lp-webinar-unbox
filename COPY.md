@@ -1,95 +1,103 @@
 # Copy da LP — Webinar Revi × Unbox
 
-Versão pós-revisão de CRO. Os trechos marcados como `[...]` dependem de dado real
-(ver "Pendências" no final) — não publique a página com eles no ar.
+**Tema:** AI Commerce: Hiper Customização de Jornada de Compra com AI
+**Quando:** 8 de setembro (terça), às 19h — ao vivo, online e gratuito
+**Com:** Bruno Pereira, fundador da Unbox
 
-## 1. Headline
+Trechos em `[...]` dependem de dado real (ver Pendências no final).
+
+## Hero
 
 Eyebrow: **Ao vivo · 8 de setembro, 19h · gratuito**
 
-> **Veja uma IA montar uma loja de e-commerce do zero.**
+> # Vem ver uma IA montar uma loja de e-commerce do zero.
+>
+> **Tema do webinar** — AI Commerce: Hiper Customização de Jornada de Compra com AI
+>
+> Bruno Pereira, da Unbox, vai te mostrar como criar uma loja com IA, vai abrir os cases de
+> 3 marcas reais e ainda vai sortear a reformulação completa de um e-commerce entre quem
+> estiver no webinar. É gratuito e é pra quem vende online.
 
-Variação para teste A/B: *"Sua loja no ar em menos de 2 horas, construída por IA. Veja acontecendo ao vivo."*
+Bullets:
+- Layout, textos, páginas de produto: tudo de pé **sem você escrever uma linha de código**.
+- Alguém vai sair desse webinar com **a loja inteira refeita** — e pode ser você.
+- E ainda tem **[X]% de desconto** pra montar a sua, só pra quem estiver lá.
 
-## 2. Sub-headline
+## Formulário
 
-> Webinar gratuito para quem vende online. Bruno Pereira, da Unbox, cria uma loja na sua frente,
-> abre o antes e depois de 3 marcas reais e sorteia a reformulação completa de um e-commerce
-> entre quem estiver na call.
+> **Garanta sua vaga em 20 segundos**
+> É de graça. O link cai no seu e-mail e a gente te lembra no WhatsApp pouco antes de começar.
 
-## 3. Bullets do hero
+Campos obrigatórios: nome, e-mail, WhatsApp. Opcionais: site/@ da loja, faturamento.
+Micro-copy: *"De graça — e o sorteio e o desconto são só pra quem assiste ao vivo"*.
 
-- Você vê a loja nascer do zero — layout, textos e páginas de produto — **sem escrever uma linha de código**.
-- **Um participante sai da call com o e-commerce inteiro refeito.** O sorteio é ao vivo.
-- **[X]% de desconto** para montar sua loja, liberado só na transmissão.
-
-## 4. CTAs
+## CTAs
 
 | Posição | Texto |
 |---|---|
 | Header | Garantir minha vaga |
-| Formulário | Quero minha vaga gratuita |
+| Formulário | Quero minha vaga |
 | Após conteúdo | Quero ver a IA montando a loja |
 | Bloco do sorteio | Quero concorrer ao sorteio |
-| CTA final | Quero minha vaga (é grátis) |
+| CTA final | Quero minha vaga |
 | Barra mobile | Quero minha vaga |
 
-Micro-copy: *"100% gratuito · sorteio e desconto só para quem participa ao vivo"* e *"20 segundos para se inscrever"*.
+## Contexto
 
-## 5. Formulário
-
-> **Sua vaga leva 20 segundos**
-> Sem custo. O link vai para o seu e-mail e você recebe um lembrete no WhatsApp antes de começar.
-
-Obrigatórios: nome, e-mail, WhatsApp. Opcionais: site/@ da loja, faturamento mensal.
-
-## 6. O que você vai descobrir
-
-1. **A IA construindo uma loja na sua frente** — layout, conteúdo e jornada de compra personalizados.
-2. **Antes e depois de marcas reais** — Zétona, Oddie e Oto, com o que mudou em cada uma.
-3. **Sorteio de uma mudança total de e-commerce** — ao vivo, só para quem está na call.
-4. **[X]% de desconto exclusivo** para criar sua loja, liberado apenas na transmissão.
-
-## 7. Palestrante
-
-**Bruno Pereira — Fundador da Unbox**
-
-> Bruno já colocou **[N] lojas** no ar com IA. Na call ele abre a ferramenta, monta uma loja do zero
-> na sua frente e responde suas perguntas ao vivo — sem slide teórico.
+> ## Sua loja parece com a de todo mundo — e é aí que a venda escapa.
 >
-> É fundador da Unbox, plataforma de AI Commerce para marcas D2C que sobe uma loja totalmente
-> personalizada em menos de 2 horas e opera e-commerces com um time de agentes de IA.
+> Mesmo tema, mesma vitrine, mesma jornada de compra. Quando tudo é igual, a decisão do cliente
+> vira preço — e o seu lucro vira orçamento de mídia. A boa notícia é que hoje dá pra fazer
+> diferente sem esperar três meses de projeto.
 
-## 8. É para você se…
+Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, não de template**
 
-- Você já vende online e sua loja parece com a do concorrente que vende o mesmo produto.
-- Você vai lançar e não quer travar 3 meses esperando desenvolvimento para começar a vender.
-- Você vende direto ao consumidor e cansou de competir só no preço e no orçamento de mídia.
+## Hiper customização da jornada, na prática
 
-## 9. Sorteio
+1. **Uma loja nascendo ao vivo** — Bruno abre a ferramenta e monta um e-commerce do zero enquanto você assiste.
+2. **O antes e depois que ninguém mostra** — Zétona, Oddie e OTO na tela, lado a lado.
+3. **Um e-commerce inteiro de presente** — no fim do webinar alguém é sorteado e sai com a loja toda refeita.
+4. **[X]% de desconto pra fazer a sua** — aparece durante a transmissão e some depois.
 
-> **Um dos participantes sai daqui com a loja inteira refeita.**
-> Sorteio ao vivo no dia 8. Quem não está na call não concorre.
+## Cases
 
-## 10. CTA final
+> ## Três marcas, três categorias, a mesma virada.
 
-> Faltam **[N] dias** (contador automático)
-> **No dia 8 você vê a loja sendo construída. Em setembro, pode ser a sua.**
-> É ao vivo, às 19h. A demonstração, o sorteio e o desconto acontecem todos na transmissão.
+- **Zétona** · azeite extravirgem — azeite espanhol com curadoria própria.
+- **Oddie Supply** · alimentos funcionais — energia e hidratação em pó pra quem treina.
+- **OTO** · cuidado masculino — shampoo e condicionador com perfume assinado.
+
+## Palestrante
+
+> **Bruno já colocou [N] lojas no ar com IA** — e não vai te mostrar slide nenhum. Ele abre a
+> ferramenta, monta a loja na sua frente e responde o que você perguntar, na hora.
+>
+> É o fundador da Unbox, a plataforma de AI Commerce que levanta uma loja totalmente personalizada
+> em menos de duas horas e ainda deixa um time de agentes de IA tocando a operação.
+
+## É para você se…
+
+- Você já vende online e bate o olho na loja do concorrente pensando: é igualzinha à minha.
+- Você vai lançar e não quer passar três meses esperando desenvolvimento pra fazer a primeira venda.
+- Você vende direto ao consumidor e cansou de brigar no preço porque não sobrou outro jeito de se destacar.
+
+## Sorteio
+
+> ## Alguém vai sair daqui com uma loja nova. Pode ser você.
+> O sorteio é ao vivo, no dia 8. Quem não estiver assistindo não concorre — simples assim.
+
+## CTA final
+
+> ## No dia 8, uma loja nasce ao vivo. A próxima pode ser a sua.
+> É às 19h e é de graça. A gravação você recebe depois — mas o sorteio e o desconto acontecem só ao vivo.
 
 ## Pendências de conteúdo
 
 | # | O que falta | Onde aparece |
 |---|---|---|
-| 1 | **% do desconto** | bullet do hero, card 04 do conteúdo, bloco do sorteio |
-| 2 | **Métrica de cada case** (Zétona, Oddie, Oto) | seção de cases |
+| 1 | **% do desconto** | bullet do hero, faixa de destaques, card 04, bloco do sorteio |
+| 2 | **Métrica de cada case** (Zétona, Oddie, OTO) | seção de cases |
 | 3 | **Prints antes/depois** dos 3 cases | seção de cases |
 | 4 | **Quantas lojas o Bruno já subiu com IA** | mini-card do hero e seção do palestrante |
-| 5 | **Confirmar a política de gravação** | FAQ |
-
-## Dados do evento
-
-- **Tema:** Hipercustomização de E-commerce e Jornada de Compra com IA
-- **Data:** 8 de setembro (terça-feira), às 19h — horário de Brasília
-- **Formato:** online, ao vivo e gratuito
-- **Público:** lojistas, empreendedores e donos de e-commerce, com foco em marcas D2C
+| 5 | **Confirmar a política de gravação** | FAQ e CTA final |
+| 6 | **Endpoint do formulário** (RD Station ou HubSpot) | `CONFIG.formEndpoint` |
