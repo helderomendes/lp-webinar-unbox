@@ -367,13 +367,18 @@ main,header,footer{position:relative;z-index:1}
 /* ============ 7. FAIXAS DE OFERTA ============ */
 
 /* Gradiente vivo da paleta, em movimento lento */
+/* Paleta em palíndromo: começa e termina no mesmo verde, então o laço
+   nunca encosta rosa no verde. A animação ainda vai e volta (alternate),
+   o que elimina qualquer emenda. */
 .offer-grad{
-  background:linear-gradient(100deg,#25F58A,#35C6FF 28%,#4B7BFF 54%,#A855F7 78%,#E255F7);
-  background-size:220% 100%;
-  animation:offerFlow 14s linear infinite;
+  background:linear-gradient(100deg,
+    #25F58A 0%, #35C6FF 18%, #4B7BFF 36%, #A855F7 54%,
+    #D96BF0 65%, #A855F7 76%, #4B7BFF 87%, #35C6FF 95%, #25F58A 100%);
+  background-size:260% 100%;
+  animation:offerFlow 26s ease-in-out infinite alternate;
   color:#04060E;
 }
-@keyframes offerFlow{from{background-position:0 0}to{background-position:220% 0}}
+@keyframes offerFlow{from{background-position:0% 50%}to{background-position:100% 50%}}
 
 /* Barra fina no topo da página, acima do header */
 .offer-bar{position:relative;z-index:80}
@@ -455,6 +460,10 @@ main,header,footer{position:relative;z-index:1}
   background:rgba(255,255,255,.06);border:1px solid var(--line);
 }
 .case .brand img{max-height:42px;width:auto;object-fit:contain}
+.case .brand .wordmark{
+  font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:21px;
+  letter-spacing:-.01em;color:var(--text);text-align:center;line-height:1.1;
+}
 .case .cat{
   display:block;font-size:12px;letter-spacing:.10em;text-transform:uppercase;
   color:var(--blue-soft);margin-top:10px;
@@ -774,7 +783,7 @@ body.js-reveal .reveal.is-in{
     <p>
       Sorteio ao vivo de um e-commerce inteiro refeito
       <span class="sep">·</span>
-      <span class="todo">[X]%</span> de desconto pra montar a sua
+      30% de desconto pra montar a sua
       <span class="sep">·</span>
       só para quem assistir
     </p>
@@ -851,8 +860,8 @@ body.js-reveal .reveal.is-in{
           </div>
         </div>
         <div class="hero-stat">
-          <span class="n"><span class="todo">[N]</span></span>
-          <p>lojas já no ar com IA — e mais uma vai nascer na sua frente no dia 8.</p>
+          <span class="n">+80</span>
+          <p>lojas criadas com IA pela Unbox — e mais uma vai nascer na sua frente no dia 8.</p>
         </div>
       </div>
 
@@ -867,7 +876,7 @@ body.js-reveal .reveal.is-in{
         </li>
         <li>
           <span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#04060E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
-          <span>E ainda tem <b><span class="todo">[X]%</span> de desconto</b> pra montar a sua, só pra quem estiver lá.</span>
+          <span>E ainda tem <b>30% de desconto</b> pra montar a sua, só pra quem estiver lá.</span>
         </li>
       </ul>
 
@@ -972,7 +981,7 @@ body.js-reveal .reveal.is-in{
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C79BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5 3.5 14.5a2 2 0 0 0 0 2.8l3.2 3.2a2 2 0 0 0 2.8 0L20.5 9.5V3.5h-6Z"/><circle cx="16.8" cy="7.2" r="1.2" fill="#C79BFF"/></svg>
       </span>
       <div>
-        <strong><span class="todo">[X]%</span> de desconto pra montar a sua</strong>
+        <strong>30% de desconto pra montar a sua</strong>
         <span>A condição sai na transmissão e vale só pra quem estiver assistindo.</span>
       </div>
     </div>
@@ -1041,7 +1050,7 @@ body.js-reveal .reveal.is-in{
           <span class="num">02</span>
           <div>
             <h4>O antes e depois que ninguém mostra</h4>
-            <p>Zétona, Oddie e OTO na tela, lado a lado: como a loja era, como ficou e o que mudou na hora de vender.</p>
+            <p>Oddie, Pamela Concept e Badia na tela, lado a lado: como a loja era, como ficou e o que mudou na hora de vender.</p>
           </div>
         </div>
       </div>
@@ -1060,7 +1069,7 @@ body.js-reveal .reveal.is-in{
         <div class="topic">
           <span class="num">04</span>
           <div>
-            <h4><span class="todo">[X]%</span> de desconto pra fazer a sua</h4>
+            <h4>30% de desconto pra fazer a sua</h4>
             <p>A condição aparece durante a transmissão e vale só pra quem assistiu. Depois ela some.</p>
           </div>
         </div>
@@ -1078,20 +1087,14 @@ body.js-reveal .reveal.is-in{
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow eyebrow--blue"><span class="dot"></span> Antes e depois</span>
-      <h2>Três marcas, três categorias, a mesma virada</h2>
-      <p class="lead">Cada uma é aberta na tela: como a loja era antes, como ficou depois e o que a IA fez no meio do caminho.</p>
+      <h2>Três marcas no ar, três categorias, a mesma virada</h2>
+      <p class="lead">Todas construídas com a Unbox e vendendo hoje. Cada uma é aberta na tela: como a loja era antes, como ficou depois e o que a IA fez no meio do caminho.</p>
     </div>
 
     <div class="cases">
       <!-- PENDENTE: trocar cada .todo pela métrica real e adicionar o print antes/depois
-           (assets/case-zetona.jpg, case-oddie.jpg, case-oto.jpg) -->
-      <div class="case reveal">
-        <div class="brand"><img src="assets/logo-zetona.webp" alt="Zétona" loading="lazy"></div>
-        <span class="ba">Antes → Depois</span>
-        <span class="cat">Azeite extravirgem</span>
-        <p class="metric"><span class="todo">[+X% de conversão]</span> depois da loja nova.</p>
-        <p>Azeite espanhol com curadoria própria. A loja passou a contar essa história em vez de só listar produto.</p>
-      </div>
+           (assets/case-oddie.jpg, case-pamela.jpg, case-badia.jpg).
+           Logos de Pamela Concept e Badia ainda em wordmark — trocar por SVG quando chegar. -->
       <div class="case reveal">
         <div class="brand"><img src="assets/logo-oddie.webp" alt="Oddie Supply" loading="lazy"></div>
         <span class="ba">Antes → Depois</span>
@@ -1100,11 +1103,18 @@ body.js-reveal .reveal.is-in{
         <p>Energia e hidratação em pó pra quem treina. Uma loja inteira construída em torno de um produto só.</p>
       </div>
       <div class="case reveal">
-        <div class="brand"><img src="assets/logo-oto.svg" alt="OTO" loading="lazy"></div>
+        <div class="brand"><span class="wordmark">Pamela Concept</span></div>
         <span class="ba">Antes → Depois</span>
-        <span class="cat">Cuidado masculino</span>
+        <span class="cat">Cabelos premium</span>
         <p class="metric"><span class="todo">[métrica real]</span> depois da loja nova.</p>
-        <p>Shampoo e condicionador masculinos com perfume assinado. Jornada refeita da home até o checkout.</p>
+        <p>Linha de cuidado capilar de alto padrão, para salão e para casa. A loja passou a vender o ritual, não o frasco.</p>
+      </div>
+      <div class="case reveal">
+        <div class="brand"><span class="wordmark">Badia</span></div>
+        <span class="ba">Antes → Depois</span>
+        <span class="cat">Temperos e especiarias</span>
+        <p class="metric"><span class="todo">[métrica real]</span> depois da loja nova.</p>
+        <p>Marca de temperos com catálogo enorme. O desafio foi fazer centenas de SKUs virarem uma jornada simples de comprar.</p>
       </div>
     </div>
   </div>
@@ -1135,7 +1145,7 @@ body.js-reveal .reveal.is-in{
         </div>
 
         <p>
-          <b style="color:var(--text)">Bruno já colocou <span class="todo">[N]</span> lojas no ar com IA</b>
+          <b style="color:var(--text)">Bruno já criou mais de 80 lojas com IA</b>
           — e não vai te mostrar slide nenhum. Ele abre a ferramenta, monta a loja na sua frente e
           responde o que você perguntar, na hora.
         </p>
@@ -1228,7 +1238,7 @@ body.js-reveal .reveal.is-in{
           </div>
           <div class="prize-box">
             <span class="kicker">Bônus para todos</span>
-            <h4>E <span class="todo">[X]%</span> de desconto pra todo mundo</h4>
+            <h4>E 30% de desconto pra todo mundo</h4>
             <p>Quem assistir leva a condição. Ela não vai pro e-mail, não vai pro site, não aparece depois.</p>
           </div>
         </div>

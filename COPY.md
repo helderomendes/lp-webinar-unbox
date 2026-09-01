@@ -21,7 +21,7 @@ Eyebrow: **Ao vivo · 8 de setembro, 19h · gratuito**
 Bullets:
 - Layout, textos, páginas de produto: tudo de pé **sem você escrever uma linha de código**.
 - Alguém vai sair desse webinar com **a loja inteira refeita** — e pode ser você.
-- E ainda tem **[X]% de desconto** pra montar a sua, só pra quem estiver lá.
+- E ainda tem **30% de desconto** pra montar a sua, só pra quem estiver lá.
 
 ## Formulário
 
@@ -57,21 +57,21 @@ Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, 
 1. **Uma loja nascendo ao vivo** — Bruno abre a ferramenta e monta um e-commerce do zero enquanto você assiste.
 2. **O antes e depois que ninguém mostra** — Zétona, Oddie e OTO na tela, lado a lado.
 3. **Um e-commerce inteiro de presente** — no fim do webinar alguém é sorteado e sai com a loja toda refeita.
-4. **[X]% de desconto pra fazer a sua** — aparece durante a transmissão e some depois.
+4. **30% de desconto pra fazer a sua** — aparece durante a transmissão e some depois.
 
 ## Cases
 
 > ## Três marcas, três categorias, a mesma virada.
 
-- **Zétona** · azeite extravirgem — azeite espanhol com curadoria própria.
 - **Oddie Supply** · alimentos funcionais — energia e hidratação em pó pra quem treina.
-- **OTO** · cuidado masculino — shampoo e condicionador com perfume assinado.
+- **Pamela Concept** · cabelos premium — linha de cuidado capilar de alto padrão, salão e casa.
+- **Badia** · temperos e especiarias — catálogo grande virando jornada simples de comprar.
 
 ## Palestrantes
 
 **Bruno Pereira — Fundador da Unbox** · quem monta a loja ao vivo
 
-> **Bruno já colocou [N] lojas no ar com IA** — e não vai te mostrar slide nenhum. Ele abre a
+> **Bruno já criou mais de 80 lojas com IA** — e não vai te mostrar slide nenhum. Ele abre a
 > ferramenta, monta a loja na sua frente e responde o que você perguntar, na hora.
 >
 > É o fundador da Unbox, a plataforma de AI Commerce que levanta uma loja totalmente personalizada
@@ -88,7 +88,7 @@ Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, 
 
 ## Faixa de oferta (topo da página)
 
-> Sorteio ao vivo de um e-commerce inteiro refeito · **[X]% de desconto** pra montar a sua ·
+> Sorteio ao vivo de um e-commerce inteiro refeito · **30% de desconto** pra montar a sua ·
 > só para quem assistir — **Quero minha vaga**
 
 ## É para você se…
@@ -111,9 +111,11 @@ Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, 
 
 | # | O que falta | Onde aparece |
 |---|---|---|
-| 1 | **% do desconto** | bullet do hero, faixa de destaques, card 04, bloco do sorteio |
-| 2 | **Métrica de cada case** (Zétona, Oddie, OTO) | seção de cases |
-| 3 | **Prints antes/depois** dos 3 cases | seção de cases |
-| 4 | **Quantas lojas o Bruno já subiu com IA** | mini-card do hero e seção do palestrante |
-| 5 | **Confirmar a política de gravação** | FAQ e CTA final |
-| 6 | **Endpoint do formulário** (RD Station ou HubSpot) | `CONFIG.formEndpoint` |
+| 1 | **Métrica de cada case** (Oddie, Pamela Concept, Badia) | seção de cases |
+| 2 | **Prints antes/depois** dos 3 cases | seção de cases |
+| 3 | **Logos da Pamela Concept e da Badia** (SVG) — hoje estão como wordmark | seção de cases |
+| 4 | **Confirmar a política de gravação** | FAQ e CTA final |
+| 5 | **Endpoint do formulário** (RD Station ou HubSpot) | `CONFIG.formEndpoint` |
+
+Resolvidos: desconto de **30%**, **+80 lojas criadas com IA** (redação escolhida para não
+afirmar que todas estão no ar).
