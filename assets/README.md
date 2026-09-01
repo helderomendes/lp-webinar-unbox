@@ -1,10 +1,13 @@
 # Assets
 
-Coloque aqui os arquivos finais. A página funciona sem eles (com fallbacks), mas o ideal é substituir:
+Arquivos oficiais em uso na página.
 
-| Arquivo | Uso | Observação |
+| Arquivo | Uso | Origem |
 |---|---|---|
-| `bruno-pereira.jpg` | foto do palestrante | quadrada, mín. 600×600. Sem o arquivo, aparece o monograma "BP" |
-| `og-cover.png` | preview em redes sociais | 1200×630 |
-| `logo-revi.svg` | logo oficial da Revi | hoje o header usa um SVG inline de placeholder |
-| `logo-unbox.svg` | logo oficial da Unbox | hoje o header usa a estrela reconstruída em SVG |
+| `logo-revi-dark.svg` | logo da Revi (dark) no header | Drive · Revi Marketing/Webinar Unbox |
+| `logo-unbox.png` | logo da Unbox no header (1298×439, fundo transparente) | Drive · Revi Marketing/Webinar Unbox |
+| `bruno-pereira.jpg` | foto do palestrante (400×400) | Drive · Revi Marketing/Webinar Unbox |
+| `og-cover.png` | preview em redes sociais (1200×630) | gerado a partir dos logos acima |
+
+Para atualizar qualquer peça, substitua o arquivo mantendo o mesmo nome — a página aponta para
+estes caminhos e não precisa de ajuste.

@@ -212,17 +212,17 @@ main,header,footer{position:relative;z-index:1}
 }
 
 /* Lockup dos logos */
-.lockup{display:flex;align-items:center;gap:14px}
-.lockup .x{color:var(--muted-2);font-size:15px;font-weight:300}
-.logo{display:flex;align-items:center;gap:9px;text-decoration:none}
-.logo-mark{width:26px;height:26px;flex:none}
-.logo-word{
-  font-family:"Space Grotesk",sans-serif;font-weight:600;
-  font-size:20px;letter-spacing:-.01em;color:#fff;
+.lockup{display:flex;align-items:center;gap:16px}
+.lockup .x{color:var(--muted-2);font-size:16px;font-weight:300}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{display:block;width:auto}
+.logo-revi{height:26px}
+.logo-unbox{height:34px}
+@media(max-width:400px){
+  .lockup{gap:12px}
+  .logo-revi{height:22px}
+  .logo-unbox{height:29px}
 }
-.logo--revi .logo-word{letter-spacing:.01em}
-.logo--unbox .logo-word{font-weight:400;letter-spacing:.06em}
-@media(max-width:400px){.lockup .logo-word{font-size:17px}}
 
 /* ============ 6. HERO + FORMULÁRIO ============ */
 .hero{padding:clamp(44px,6vw,76px) 0 clamp(56px,7vw,88px)}
@@ -482,6 +482,123 @@ main,header,footer{position:relative;z-index:1}
 .site-footer a{color:var(--blue-soft);text-decoration:none}
 .site-footer a:hover{text-decoration:underline}
 
+/* ============ 11b. ELEMENTOS DE IA (AURORA, REDE, SPARKLES, ESFERA) ============ */
+
+/* Aurora: blobs de luz que respiram devagar ao fundo */
+.orb{animation:drift 26s ease-in-out infinite;will-change:transform}
+.orb--blue{animation-duration:32s;animation-delay:-6s}
+.orb--purple{animation-duration:38s;animation-delay:-14s}
+@keyframes drift{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  33%{transform:translate3d(6%,4%,0) scale(1.12)}
+  66%{transform:translate3d(-5%,7%,0) scale(.94)}
+}
+
+/* Véu de aurora no topo: faixa de luz azul→roxo sobre o grid */
+.bg-fx .veil{
+  position:absolute;top:-10%;left:-10%;right:-10%;height:70vh;
+  background:
+    radial-gradient(60% 60% at 20% 0%,rgba(37,245,138,.16),transparent 60%),
+    radial-gradient(70% 70% at 75% 10%,rgba(47,107,255,.28),transparent 62%),
+    radial-gradient(50% 60% at 50% 40%,rgba(168,85,247,.16),transparent 65%);
+  filter:blur(30px);
+  animation:veil 18s ease-in-out infinite alternate;
+}
+@keyframes veil{from{opacity:.75;transform:translateY(0)}to{opacity:1;transform:translateY(3%)}}
+
+/* Rede neural: canvas de nós conectados atrás do hero */
+.neural{
+  position:absolute;inset:0;width:100%;height:100%;
+  z-index:0;pointer-events:none;opacity:.7;
+  mask-image:radial-gradient(ellipse 75% 75% at 50% 45%,#000 35%,transparent 82%);
+  -webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 45%,#000 35%,transparent 82%);
+}
+.hero .wrap{position:relative;z-index:1}
+
+/* Esfera iridescente girando atrás do formulário */
+.sphere{
+  position:absolute;width:340px;height:340px;border-radius:50%;
+  top:-90px;right:-120px;z-index:0;pointer-events:none;
+  background:conic-gradient(from 0deg,#25F58A,#35C6FF,#4B7BFF,#A855F7,#E255F7,#25F58A);
+  filter:blur(58px);opacity:.42;
+  animation:spin 26s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:980px){.sphere{width:220px;height:220px;top:-60px;right:-80px;opacity:.34}}
+
+/* Sparkles: estrelas de 4 pontas, o mesmo desenho da marca Unbox */
+.spark{
+  position:absolute;z-index:2;pointer-events:none;
+  width:26px;height:26px;
+  background:no-repeat center/contain
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 3C57 29 71 43 97 50 71 57 57 71 50 97 43 71 29 57 3 50 29 43 43 29 50 3Z' fill='%2325F58A'/%3E%3C/svg%3E");
+  filter:drop-shadow(0 0 10px rgba(37,245,138,.9));
+  animation:twinkle 4.5s ease-in-out infinite;
+}
+.spark--blue{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 3C57 29 71 43 97 50 71 57 57 71 50 97 43 71 29 57 3 50 29 43 43 29 50 3Z' fill='%2358A6FF'/%3E%3C/svg%3E");
+  filter:drop-shadow(0 0 10px rgba(88,166,255,.9));
+}
+.spark--purple{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 3C57 29 71 43 97 50 71 57 57 71 50 97 43 71 29 57 3 50 29 43 43 29 50 3Z' fill='%23C79BFF'/%3E%3C/svg%3E");
+  filter:drop-shadow(0 0 10px rgba(199,155,255,.9));
+}
+@keyframes twinkle{
+  0%,100%{transform:scale(.72) rotate(-8deg);opacity:.55}
+  50%{transform:scale(1.08) rotate(6deg);opacity:1}
+}
+
+/* Feixe de luz que percorre o topo dos cards */
+.card::before{
+  background:linear-gradient(90deg,transparent,rgba(37,245,138,.75),rgba(88,166,255,.75),transparent);
+  background-size:220% 100%;
+  animation:beam 7s linear infinite;
+}
+@keyframes beam{from{background-position:220% 0}to{background-position:-120% 0}}
+
+/* ============ 11c. CURSOR NEON ============ */
+/* O cursor nativo só some quando o JS assume — sem JS, nada muda. */
+body.has-cursor,
+body.has-cursor a,
+body.has-cursor button,
+body.has-cursor .accordion-btn{cursor:none}
+body.has-cursor input,
+body.has-cursor select,
+body.has-cursor textarea{cursor:auto}
+
+.cursor-dot,.cursor-ring{
+  position:fixed;top:0;left:0;z-index:9999;
+  pointer-events:none;mix-blend-mode:screen;
+  transform:translate3d(-50%,-50%,0);
+  opacity:0;transition:opacity .25s ease;
+}
+body.has-cursor .cursor-dot,
+body.has-cursor .cursor-ring{opacity:1}
+body.has-cursor.cursor-out .cursor-dot,
+body.has-cursor.cursor-out .cursor-ring{opacity:0}
+
+.cursor-dot{
+  width:9px;height:9px;border-radius:50%;
+  background:#25F58A;
+  box-shadow:0 0 10px #25F58A,0 0 26px rgba(37,245,138,.75);
+}
+.cursor-ring{
+  width:40px;height:40px;border-radius:50%;
+  border:1.5px solid rgba(143,178,255,.85);
+  box-shadow:0 0 24px rgba(47,107,255,.6),inset 0 0 20px rgba(168,85,247,.4);
+  transition:width .25s ease,height .25s ease,border-color .25s ease,background .25s ease,opacity .25s ease;
+}
+.cursor-ring.is-hot{
+  width:66px;height:66px;
+  border-color:rgba(37,245,138,.95);
+  background:radial-gradient(circle,rgba(37,245,138,.14),transparent 65%);
+}
+.cursor-ring.is-down{width:30px;height:30px}
+
+@media(prefers-reduced-motion:reduce){
+  .orb,.bg-fx .veil,.sphere,.spark,.card::before{animation:none!important}
+}
+
 /* ============ 12. ANIMAÇÕES E ACESSIBILIDADE ============ */
 
 /* Barra fixa de CTA — apenas mobile, após o formulário do hero sair da tela */
@@ -528,43 +645,29 @@ body.js-reveal .reveal.is-in{
 <!-- Fundo: grid técnico + orbs neon -->
 <div class="bg-fx" aria-hidden="true">
   <div class="grid-lines"></div>
+  <div class="veil"></div>
   <div class="orb orb--green"></div>
   <div class="orb orb--blue"></div>
   <div class="orb orb--purple"></div>
 </div>
 
+<!-- Cursor neon (ativado por JS; sem JS o cursor do sistema continua) -->
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
 <!-- ===================== HEADER (STICKY) ===================== -->
 <header class="site-header">
   <div class="wrap">
     <div class="lockup">
-      <!-- LOGO REVI — trocar por assets/logo-revi.svg quando tiver o arquivo oficial -->
-      <a class="logo logo--revi" href="#topo" aria-label="Revi">
-        <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <rect x="1.2" y="1.2" width="29.6" height="29.6" rx="9" fill="url(#reviGrad)"/>
-          <path d="M10 22V10.6h5.6a3.6 3.6 0 0 1 .7 7.1L19.8 22h-3.3l-3-4h-.5v4H10Zm3-6.6h2.3a1.5 1.5 0 0 0 0-3H13v3Z" fill="#fff"/>
-          <defs>
-            <linearGradient id="reviGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#2F6BFF"/><stop offset="1" stop-color="#0B2A9E"/>
-            </linearGradient>
-          </defs>
-        </svg>
-        <span class="logo-word">revi</span>
+      <!-- Logos oficiais: assets/logo-revi-dark.svg e assets/logo-unbox.png -->
+      <a class="logo" href="#topo" aria-label="Revi">
+        <img class="logo-revi" src="assets/logo-revi-dark.svg" alt="Revi" width="85" height="26">
       </a>
 
       <span class="x" aria-hidden="true">×</span>
 
-      <!-- LOGO UNBOX — trocar por assets/logo-unbox.svg quando tiver o arquivo oficial -->
-      <a class="logo logo--unbox" href="#topo" aria-label="Unbox">
-        <svg class="logo-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-          <path d="M50 3C57 29 71 43 97 50 71 57 57 71 50 97 43 71 29 57 3 50 29 43 43 29 50 3Z"
-                fill="url(#unboxGrad)" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
-          <defs>
-            <linearGradient id="unboxGrad" x1="12" y1="10" x2="88" y2="92" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#25F58A"/><stop offset=".5" stop-color="#5B7BFF"/><stop offset="1" stop-color="#A855F7"/>
-            </linearGradient>
-          </defs>
-        </svg>
-        <span class="logo-word">unbox</span>
+      <a class="logo" href="#topo" aria-label="Unbox">
+        <img class="logo-unbox" src="assets/logo-unbox.png" alt="Unbox" width="101" height="34">
       </a>
     </div>
 
@@ -579,6 +682,10 @@ body.js-reveal .reveal.is-in{
 
 <!-- ===================== HERO ===================== -->
 <section class="section hero">
+  <canvas class="neural" id="neuralNet" aria-hidden="true"></canvas>
+  <span class="spark" style="top:12%;left:4%" aria-hidden="true"></span>
+  <span class="spark spark--purple" style="top:34%;right:3%;width:18px;height:18px;animation-delay:-1.6s" aria-hidden="true"></span>
+  <span class="spark spark--blue" style="bottom:12%;left:46%;width:20px;height:20px;animation-delay:-3s" aria-hidden="true"></span>
   <div class="wrap hero-grid">
 
     <!-- Coluna esquerda: promessa -->
@@ -626,7 +733,7 @@ body.js-reveal .reveal.is-in{
       </ul>
 
       <div class="hero-speaker">
-        <div class="avatar" aria-hidden="true">BP</div>
+        <img class="avatar" src="assets/bruno-pereira.jpg" alt="Bruno Pereira" width="52" height="52">
         <div>
           <strong>Bruno Pereira</strong>
           <span>Fundador da Unbox · líder em AI Commerce no Brasil</span>
@@ -635,8 +742,9 @@ body.js-reveal .reveal.is-in{
     </div>
 
     <!-- Coluna direita: formulário de inscrição -->
-    <div id="inscricao">
-      <div class="form-card" id="formCard">
+    <div id="inscricao" style="position:relative">
+      <div class="sphere" aria-hidden="true"></div>
+      <div class="form-card" id="formCard" style="position:relative;z-index:1">
         <div class="form-card__inner">
 
           <div class="form-body">
@@ -929,7 +1037,9 @@ body.js-reveal .reveal.is-in{
 <!-- ===================== SORTEIO + DESCONTO ===================== -->
 <section class="section">
   <div class="wrap">
-    <div class="prize reveal">
+    <div class="prize reveal" style="position:relative">
+      <span class="spark" style="top:-14px;left:8%" aria-hidden="true"></span>
+      <span class="spark spark--purple" style="bottom:-12px;right:10%;width:20px;height:20px;animation-delay:-2.2s" aria-hidden="true"></span>
       <div class="prize__inner">
         <span class="eyebrow"><span class="dot pulse"></span> Só para quem estiver ao vivo</span>
         <h2 style="margin-top:18px">Dois motivos a mais para não perder</h2>
@@ -1176,6 +1286,133 @@ var CONFIG = {
       }
     });
   });
+
+  /* ---------- Cursor neon ---------- */
+  var fine = window.matchMedia('(pointer:fine)').matches;
+  var calm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var dot = document.getElementById('cursorDot');
+  var ring = document.getElementById('cursorRing');
+
+  if (fine && !calm) {
+    document.body.classList.add('has-cursor');
+    var mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    var rx = mx, ry = my;
+
+    document.addEventListener('mousemove', function (e) {
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0) translate(-50%,-50%)';
+      document.body.classList.remove('cursor-out');
+    });
+    document.addEventListener('mouseleave', function () { document.body.classList.add('cursor-out'); });
+    document.addEventListener('mousedown', function () { ring.classList.add('is-down'); });
+    document.addEventListener('mouseup', function () { ring.classList.remove('is-down'); });
+
+    // o anel segue com um leve atraso
+    (function follow() {
+      rx += (mx - rx) * .18;
+      ry += (my - ry) * .18;
+      ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0) translate(-50%,-50%)';
+      requestAnimationFrame(follow);
+    })();
+
+    // cresce sobre elementos interativos
+    var hot = 'a,button,input,select,.accordion-btn,.chip,.tag';
+    document.addEventListener('mouseover', function (e) {
+      if (e.target.closest(hot)) ring.classList.add('is-hot');
+    });
+    document.addEventListener('mouseout', function (e) {
+      if (e.target.closest(hot)) ring.classList.remove('is-hot');
+    });
+  }
+
+  /* ---------- Rede neural do hero ---------- */
+  var canvas = document.getElementById('neuralNet');
+  if (canvas && !calm) {
+    var ctx = canvas.getContext('2d');
+    var nodes = [], w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var running = true, pointer = { x: -999, y: -999 };
+    var TINTS = ['37,245,138', '88,166,255', '199,155,255'];
+
+    function sizeCanvas() {
+      var r = canvas.getBoundingClientRect();
+      w = r.width; h = r.height;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var count = Math.round(Math.min(64, Math.max(22, w / 24)));
+      nodes = [];
+      for (var i = 0; i < count; i++) {
+        nodes.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - .5) * .22,
+          vy: (Math.random() - .5) * .22,
+          r: Math.random() * 1.6 + .9,
+          t: TINTS[i % TINTS.length]
+        });
+      }
+    }
+
+    function draw() {
+      if (!running) return;
+      ctx.clearRect(0, 0, w, h);
+
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+
+        // conexões entre nós próximos
+        for (var j = i + 1; j < nodes.length; j++) {
+          var m = nodes[j];
+          var dx = n.x - m.x, dy = n.y - m.y;
+          var d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 132) {
+            ctx.strokeStyle = 'rgba(' + n.t + ',' + (.16 * (1 - d / 132)) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(m.x, m.y); ctx.stroke();
+          }
+        }
+
+        // reação ao cursor: liga os nós próximos ao ponteiro
+        var pdx = n.x - pointer.x, pdy = n.y - pointer.y;
+        var pd = Math.sqrt(pdx * pdx + pdy * pdy);
+        if (pd < 170) {
+          ctx.strokeStyle = 'rgba(37,245,138,' + (.34 * (1 - pd / 170)) + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(pointer.x, pointer.y); ctx.stroke();
+        }
+
+        ctx.fillStyle = 'rgba(' + n.t + ',' + (pd < 170 ? .95 : .6) + ')';
+        ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+
+    var hero = canvas.parentElement;
+    hero.addEventListener('mousemove', function (e) {
+      var r = canvas.getBoundingClientRect();
+      pointer.x = e.clientX - r.left; pointer.y = e.clientY - r.top;
+    });
+    hero.addEventListener('mouseleave', function () { pointer.x = pointer.y = -999; });
+
+    var rt;
+    window.addEventListener('resize', function () {
+      clearTimeout(rt); rt = setTimeout(sizeCanvas, 200);
+    });
+
+    // pausa a animação quando o hero sai da tela
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        var visible = entries[0].isIntersecting;
+        if (visible && !running) { running = true; draw(); }
+        running = visible;
+      }, { threshold: 0 }).observe(hero);
+    }
+
+    sizeCanvas();
+    draw();
+  }
 
   /* ---------- CTA fixo no mobile ---------- */
   var mobileCta = document.getElementById('mobileCta');

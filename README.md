@@ -44,15 +44,16 @@ var CONFIG = {
 
 Campos enviados: `name`, `email`, `personal_phone`, `cf_loja`, `cf_faturamento_mensal`.
 
-### 2. Logos e foto (placeholders)
+### 2. Logos e foto
 
-Os logos hoje são **reconstruções em SVG inline** (marca da Unbox + wordmarks), não os arquivos oficiais:
+Os arquivos oficiais já estão aplicados (vindos do Drive, pasta *Revi Marketing → Webinar Unbox*):
 
-- `index.html` → comentários `LOGO REVI` e `LOGO UNBOX` no header. Troque por
-  `<img src="assets/logo-revi.svg">` / `assets/logo-unbox.svg` quando tiver os originais.
-- Foto do palestrante: coloque o arquivo em **`assets/bruno-pereira.jpg`**. Sem o arquivo,
-  a página cai automaticamente para o monograma "BP".
-- Imagem de compartilhamento: `assets/og-cover.png` (1200×630).
+- `assets/logo-revi-dark.svg` — logo da Revi em versão dark, no header
+- `assets/logo-unbox.png` — logo da Unbox (estrela neon + wordmark), no header
+- `assets/bruno-pereira.jpg` — foto do palestrante, no hero e na seção dele
+- `assets/og-cover.png` — imagem de compartilhamento 1200×630, gerada a partir dos logos
+
+Para trocar qualquer um, basta substituir o arquivo mantendo o nome.
 
 ### 3. Links legais e pixels
 
@@ -71,6 +72,21 @@ Os logos hoje são **reconstruções em SVG inline** (marca da Unbox + wordmarks
 | `--neon` | gradiente verde → azul → roxo | botões, números, destaques |
 
 Tipografia: **Space Grotesk** (títulos e botões) + **Inter** (texto).
+
+## Elementos de IA
+
+Camada visual que dá o clima de inteligência artificial, toda em CSS/Canvas — sem biblioteca externa:
+
+- **Aurora** — véu de luz verde/azul/roxo e orbs que se movem devagar ao fundo
+- **Rede neural** — canvas de nós conectados no hero, que reagem ao ponteiro do mouse
+- **Esfera iridescente** — gradiente cônico girando atrás do formulário
+- **Sparkles** — estrelas de 4 pontas (o mesmo desenho da marca Unbox) piscando em pontos-chave
+- **Feixe de luz** — brilho que percorre o topo dos cards
+- **Cursor neon** — ponto verde + anel azul com atraso, que cresce sobre elementos clicáveis
+
+Tudo desligado automaticamente em `prefers-reduced-motion`. O cursor customizado só assume quando
+há mouse de verdade (`pointer: fine`) e o JS carrega — sem isso, o cursor do sistema continua normal.
+A rede neural pausa quando o hero sai da tela.
 
 ## Acessibilidade e performance
 
