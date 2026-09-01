@@ -86,6 +86,10 @@
 }
 </script>
 
+<!-- Revi — rastreamento de visitantes e leads -->
+<link rel="preconnect" href="https://df81sh4kfcckj.cloudfront.net">
+<script defer src="https://df81sh4kfcckj.cloudfront.net/revi-loader.js?siteKey=jShgR3ZEhqbyajSbp0MTKb436kkMEACcqPuu91lu"></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
@@ -1503,7 +1507,11 @@ var CONFIG = {
   formEndpoint: '',
 
   // Página de obrigado (usada quando formEndpoint está configurado)
-  thankYouUrl: ''
+  thankYouUrl: '',
+
+  // Nomes dos eventos de conversão
+  leadEvent: 'webinar_lead',        // inscrição concluída
+  formStartEvent: 'webinar_form_start'  // começou a preencher (mede abandono)
 };
 
 (function () {
@@ -1552,6 +1560,46 @@ var CONFIG = {
     }
   });
 
+  /* ---------- Eventos de conversão ----------
+     Dispara em três frentes, para não depender de uma só integração:
+       1. dataLayer  — lido por GTM / GA4 / Meta via GTM
+       2. evento de DOM 'revi:lead' — qualquer script da página pode escutar
+       3. API da Revi — chamada só se o loader tiver exposto o objeto global
+     Tudo dentro de try/catch: rastreamento nunca pode quebrar a inscrição. */
+  function track(nomeDoEvento, dados) {
+    dados = dados || {};
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({ event: nomeDoEvento }, dados));
+
+      document.dispatchEvent(new CustomEvent('revi:' + nomeDoEvento, { detail: dados }));
+
+      var revi = window.revi || window.Revi || window.reviTracker;
+      if (revi) {
+        if (dados.email && typeof revi.identify === 'function') {
+          revi.identify({ name: dados.name, email: dados.email, phone: dados.phone });
+        }
+        if (typeof revi.track === 'function') revi.track(nomeDoEvento, dados);
+        else if (typeof revi.trackEvent === 'function') revi.trackEvent(nomeDoEvento, dados);
+        else if (typeof revi === 'function') revi(nomeDoEvento, dados);
+      }
+    } catch (e) {
+      if (window.console && console.warn) console.warn('[tracking] falhou:', e);
+    }
+  }
+
+  // dispara uma única vez, quando a pessoa toca no primeiro campo
+  var comecouAPreencher = false;
+  form_start_listener();
+  function form_start_listener() {
+    var form = document.getElementById('leadForm');
+    form.addEventListener('focusin', function () {
+      if (comecouAPreencher) return;
+      comecouAPreencher = true;
+      track(CONFIG.formStartEvent, { form: 'inscricao_webinar' });
+    }, { once: false });
+  }
+
   /* ---------- Validação e envio ---------- */
   var form = document.getElementById('leadForm');
   var card = document.getElementById('formCard');
@@ -1589,6 +1637,16 @@ var CONFIG = {
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando...';
+
+    track(CONFIG.leadEvent, {
+      form: 'inscricao_webinar',
+      webinar: 'ai-commerce-hiper-customizacao-2026-09-08',
+      name: form.name.value.trim(),
+      email: form.email.value.trim().toLowerCase(),
+      phone: phone.value.replace(/\D/g, ''),
+      loja: form.cf_loja.value.trim(),
+      faturamento: form.cf_faturamento_mensal.value
+    });
 
     if (CONFIG.formEndpoint) {
       // Envio real: posta o formulário para o endpoint configurado.

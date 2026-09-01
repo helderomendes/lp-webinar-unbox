@@ -78,7 +78,37 @@ Eles são propositalmente visíveis para não irem ao ar por engano. Busque em `
 Faltam também os **prints antes/depois** dos cases (`assets/case-zetona.jpg`, `case-oddie.jpg`,
 `case-oto.jpg`) e a **confirmação da política de gravação** citada no FAQ.
 
-### 5. Links legais e pixels
+### 5. Rastreamento de leads (Revi)
+
+O loader da Revi está instalado no `<head>` com `defer`:
+
+```html
+<script defer src="https://df81sh4kfcckj.cloudfront.net/revi-loader.js?siteKey=..."></script>
+```
+
+Quando a inscrição é validada, a função `track()` dispara o evento em **três frentes**, para não
+depender de uma integração só:
+
+| Frente | O que acontece |
+|---|---|
+| `window.dataLayer` | `dataLayer.push({event: 'webinar_lead', ...})` — lido por GTM, GA4 e Meta via GTM |
+| Evento de DOM | `document.dispatchEvent(new CustomEvent('revi:webinar_lead', {detail}))` |
+| API da Revi | chama `revi.identify({name,email,phone})` e `revi.track('webinar_lead', dados)` **se** o loader tiver exposto `window.revi` (ou `Revi` / `reviTracker`) |
+
+Dois eventos são emitidos:
+
+- **`webinar_form_start`** — no primeiro clique dentro do formulário, para medir abandono
+- **`webinar_lead`** — na inscrição validada, com `name`, `email` (minúsculo), `phone` (só dígitos),
+  `loja`, `faturamento` e o identificador do webinar
+
+Os nomes ficam em `CONFIG.leadEvent` e `CONFIG.formStartEvent`. Todo o bloco roda dentro de
+`try/catch`: se o rastreamento falhar, a inscrição acontece do mesmo jeito.
+
+> **Confirme com a Revi** o nome real do objeto global e do método de evento. O código cobre
+> `revi.track`, `revi.trackEvent` e `revi(nome, dados)`; se a API for outra, ajuste o bloco
+> `function track()` — o dataLayer e o evento de DOM continuam funcionando de qualquer forma.
+
+### 6. Links legais e pixels
 
 - Política de Privacidade: dois `href="#"` (formulário e rodapé).
 - Não há GTM/pixel instalado. Adicione antes do `</body>` conforme a stack de mídia.
