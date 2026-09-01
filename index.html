@@ -380,6 +380,16 @@ main,header,footer{position:relative;z-index:1}
 }
 .case p{color:var(--muted);font-size:14.5px;margin-top:12px}
 .case .metric{color:var(--text);font-size:15.5px;font-weight:600}
+.case .brand{
+  height:66px;display:grid;place-items:center;margin-bottom:14px;
+  padding:12px 16px;border-radius:14px;
+  background:rgba(255,255,255,.06);border:1px solid var(--line);
+}
+.case .brand img{max-height:42px;width:auto;object-fit:contain}
+.case .cat{
+  display:block;font-size:12px;letter-spacing:.10em;text-transform:uppercase;
+  color:var(--blue-soft);margin-top:10px;
+}
 
 /* Palestrante */
 .speaker{
@@ -953,7 +963,7 @@ body.js-reveal .reveal.is-in{
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow eyebrow--blue"><span class="dot"></span> Antes e depois</span>
-      <h2>Marcas que deixaram de parecer com todas as outras</h2>
+      <h2>Três marcas D2C, três categorias, o mesmo caminho</h2>
       <p class="lead">No webinar, cada case é aberto na tela: como a loja era, como ficou e o que a IA fez no meio do caminho.</p>
     </div>
 
@@ -961,22 +971,25 @@ body.js-reveal .reveal.is-in{
       <!-- PENDENTE: trocar cada .todo pela métrica real e adicionar o print antes/depois
            (assets/case-zetona.jpg, case-oddie.jpg, case-oto.jpg) -->
       <div class="case reveal">
+        <div class="brand"><img src="assets/logo-zetona.webp" alt="Zétona" loading="lazy"></div>
         <span class="ba">Antes → Depois</span>
-        <div class="name" style="margin-top:10px">Zétona</div>
+        <span class="cat">Azeite extravirgem</span>
         <p class="metric"><span class="todo">[+X% de conversão]</span> depois da loja nova.</p>
-        <p>Você vê a loja antiga e a nova lado a lado, e o que mudou no meio do caminho.</p>
+        <p>Marca de azeite espanhol com curadoria própria: a loja passou a contar essa história em vez de listar produto.</p>
       </div>
       <div class="case reveal">
+        <div class="brand"><img src="assets/logo-oddie.webp" alt="Oddie Supply" loading="lazy"></div>
         <span class="ba">Antes → Depois</span>
-        <div class="name" style="margin-top:10px">Oddie</div>
+        <span class="cat">Alimentos funcionais</span>
         <p class="metric"><span class="todo">[métrica real]</span> depois da loja nova.</p>
-        <p>Do tema genérico à loja com cara de marca, no ar em poucas horas.</p>
+        <p>Energia e hidratação em pó para quem treina: loja construída em torno de um produto só, sem cara de template.</p>
       </div>
       <div class="case reveal">
+        <div class="brand"><img src="assets/logo-oto.svg" alt="OTO" loading="lazy"></div>
         <span class="ba">Antes → Depois</span>
-        <div class="name" style="margin-top:10px">Oto</div>
+        <span class="cat">Cuidado masculino</span>
         <p class="metric"><span class="todo">[métrica real]</span> depois da loja nova.</p>
-        <p>A jornada de compra refeita, da primeira dobra da home até o checkout.</p>
+        <p>Shampoo e condicionador masculinos com perfume assinado: a jornada refeita da home ao checkout.</p>
       </div>
     </div>
   </div>
