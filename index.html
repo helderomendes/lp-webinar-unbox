@@ -468,7 +468,7 @@ main,header,footer{position:relative;z-index:1}
     #25F58A 0%, #35C6FF 18%, #4B7BFF 36%, #A855F7 54%,
     #D96BF0 65%, #A855F7 76%, #4B7BFF 87%, #35C6FF 95%, #25F58A 100%);
   background-size:260% 100%;
-  animation:offerFlow 26s ease-in-out infinite alternate;
+  animation:offerFlow 9s ease-in-out infinite alternate;
   color:#04060E;
 }
 @keyframes offerFlow{from{background-position:0% 50%}to{background-position:100% 50%}}
@@ -510,6 +510,12 @@ main,header,footer{position:relative;z-index:1}
   display:block;font-family:"Space Grotesk",sans-serif;font-size:19px;
   font-weight:700;margin-bottom:4px;color:#04060E;
 }
+/* percentual em destaque: é a oferta, precisa ser lida antes do resto */
+.strip-item .pct{
+  font-size:42px;font-weight:800;line-height:.9;letter-spacing:-.03em;
+  display:inline-block;vertical-align:-4px;margin-right:6px;
+}
+@media(max-width:520px){.strip-item .pct{font-size:34px;vertical-align:-3px}}
 .strip-item span{font-size:15px;color:rgba(4,6,14,.78);line-height:1.45}
 .strip .todo{
   background:rgba(4,6,14,.14);border-color:rgba(4,6,14,.55);color:#04060E;
@@ -1137,7 +1143,7 @@ body.js-reveal .reveal.is-in{
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C79BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5 3.5 14.5a2 2 0 0 0 0 2.8l3.2 3.2a2 2 0 0 0 2.8 0L20.5 9.5V3.5h-6Z"/><circle cx="16.8" cy="7.2" r="1.2" fill="#C79BFF"/></svg>
       </span>
       <div>
-        <strong><span class="nb">30% de desconto</span> pra montar a sua</strong>
+        <strong><span class="pct">30%</span> de desconto pra montar a sua</strong>
         <span>A condição sai na transmissão e vale só pra quem estiver assistindo.</span>
       </div>
     </div>
