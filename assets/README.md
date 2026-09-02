@@ -17,13 +17,14 @@ A placa de cada logo segue o desenho da marca: Oddie e Pamela ficam sobre placa 
 claros), a Badia sobre placa branca, porque o logo dela tem elementos escuros e foi desenhado
 para fundo claro.
 | `og-cover.png` | preview em redes sociais (1200×630) | gerado a partir dos logos acima |
+| `case-oddie-antes.jpg` | lâmina da loja antiga da Oddie (400×984) | Drive · Revi Marketing/Webinar Unbox |
 | `case-oddie-depois.jpg` | lâmina da loja nova da Oddie (400×1861) | Drive · Revi Marketing/Webinar Unbox |
 | `case-pamela-antes.jpg` | lâmina da loja antiga, Shopify (900×4408) | Drive · Revi Marketing/Webinar Unbox |
 | `case-pamela-depois.jpg` | lâmina da loja nova, Unbox (900×4408) | Drive · Revi Marketing/Webinar Unbox |
 | `case-badia-antes.jpg` | lâmina da loja antiga (400×919) | Drive · Revi Marketing/Webinar Unbox |
 | `case-badia-depois.jpg` | lâmina da loja nova (400×1055) | Drive · Revi Marketing/Webinar Unbox |
 
-As cinco lâminas somam ~1,2 MB. As da Pamela vieram em 2940×14400 e foram reduzidas aqui para
+As seis lâminas somam ~1,4 MB. As da Pamela vieram em 2940×14400 e foram reduzidas aqui para
 900px de largura em JPEG qualidade 82 (~420 KB cada). As da Oddie e da Badia já chegaram
 prontas em 400px de largura.
 

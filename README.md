@@ -106,7 +106,7 @@ em `assets/`:
 
 | Arquivo | Case |
 |---|---|
-| `case-oddie-depois.jpg` | Oddie — só o depois (sem slider, a lâmina só rola) |
+| `case-oddie-antes.jpg` / `case-oddie-depois.jpg` | Oddie Supply |
 | `case-pamela-antes.jpg` / `case-pamela-depois.jpg` | Pamela Concept |
 | `case-badia-antes.jpg` / `case-badia-depois.jpg` | Badia |
 
@@ -114,7 +114,7 @@ em `assets/`:
 alta. Antes e depois da mesma marca não precisam ter a mesma altura — cada camada percorre a
 própria sobra, então as duas chegam ao rodapé juntas.
 
-As cinco lâminas já estão no repositório. **Se algum arquivo faltar, o mockup daquele card se
+As seis lâminas já estão no repositório. **Se algum arquivo faltar, o mockup daquele card se
 remove sozinho** e ele fica só com logo, categoria e texto — nada de imagem quebrada no ar.
 
 Detalhes de comportamento: a rolagem pausa enquanto alguém arrasta o slider; o controle é um

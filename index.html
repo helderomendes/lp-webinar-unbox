@@ -1370,12 +1370,19 @@ body.js-reveal .reveal.is-in{
            Sem os arquivos, o mockup se remove sozinho e o card fica só com o texto. -->
       <div class="case reveal">
         <div class="brand"><img src="assets/logo-oddie.webp" alt="Oddie Supply" loading="lazy"></div>
-        <div class="shot shot--unico" data-shot>
+        <div class="shot" data-shot>
           <div class="laptop">
             <div class="laptop-tela">
-              <div class="shot-camada shot-depois">
-                <img src="assets/case-oddie-depois.jpg" alt="Loja da Oddie Supply feita com a Unbox" loading="lazy" decoding="async">
+              <div class="shot-camada shot-antes">
+                <img src="assets/case-oddie-antes.jpg" alt="Loja da Oddie Supply antes" loading="lazy" decoding="async">
               </div>
+              <div class="shot-camada shot-depois">
+                <img src="assets/case-oddie-depois.jpg" alt="Loja da Oddie Supply depois" loading="lazy" decoding="async">
+              </div>
+              <input class="shot-range" type="range" min="0" max="100" value="50" step="0.1"
+                     aria-label="Comparar o antes e o depois da loja da Oddie Supply">
+              <span class="shot-divisor" aria-hidden="true"></span>
+              <span class="shot-tag shot-tag--antes">Antes</span>
               <span class="shot-tag shot-tag--depois">Depois</span>
             </div>
             <div class="laptop-base" aria-hidden="true"></div>
