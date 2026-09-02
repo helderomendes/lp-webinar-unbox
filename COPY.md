@@ -20,7 +20,7 @@ Eyebrow: **Ao vivo · 8 de setembro, 19h · gratuito**
 
 Bullets:
 - Layout, textos, páginas de produto: tudo de pé **sem você escrever uma linha de código**.
-- Alguém vai sair desse webinar com **a loja inteira refeita** — e pode ser você.
+- Alguém vai sair desse webinar com **a loja inteira refeita**. Pode ser você.
 - E ainda tem **30% de desconto** pra montar a sua, só pra quem estiver lá.
 
 ## Formulário
@@ -29,7 +29,7 @@ Bullets:
 > É de graça. O link cai no seu e-mail e a gente te lembra no WhatsApp pouco antes de começar.
 
 Campos obrigatórios: nome, e-mail, WhatsApp. Opcionais: site/@ da loja, faturamento.
-Micro-copy: *"De graça — e o sorteio e o desconto são só pra quem assiste ao vivo"*.
+Micro-copy: *"De graça. O sorteio e o desconto são só pra quem assiste ao vivo"*.
 
 ## CTAs
 
@@ -44,10 +44,10 @@ Micro-copy: *"De graça — e o sorteio e o desconto são só pra quem assiste a
 
 ## Contexto
 
-> ## Sua loja parece com a de todo mundo — e é aí que a venda escapa.
+> ## Sua loja parece com a de todo mundo. É aí que a venda escapa.
 >
 > Mesmo tema, mesma vitrine, mesma jornada de compra. Quando tudo é igual, a decisão do cliente
-> vira preço — e o seu lucro vira orçamento de mídia. A boa notícia é que hoje dá pra fazer
+> vira preço e o seu lucro vira orçamento de mídia. A boa notícia é que hoje dá pra fazer
 > diferente sem esperar três meses de projeto.
 
 Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, não de template**
@@ -71,7 +71,7 @@ Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, 
 
 **Bruno Pereira — Fundador da Unbox** · quem monta a loja ao vivo
 
-> **Bruno já criou mais de 100 lojas com IA** — e não vai te mostrar slide nenhum. Ele abre a
+> **Bruno já criou mais de 100 lojas com IA** e não vai te mostrar slide nenhum. Ele abre a
 > ferramenta, monta a loja na sua frente e responde o que você perguntar, na hora.
 >
 > É o fundador da Unbox, a plataforma de AI Commerce que levanta uma loja totalmente personalizada
@@ -100,12 +100,12 @@ Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, 
 ## Sorteio
 
 > ## Alguém vai sair daqui com uma loja nova. Pode ser você.
-> O sorteio é ao vivo, no dia 8. Quem não estiver assistindo não concorre — simples assim.
+> O sorteio é ao vivo, no dia 8. Quem não estiver assistindo não concorre, simples assim.
 
 ## CTA final
 
 > ## No dia 8, uma loja nasce ao vivo. A próxima pode ser a sua.
-> É às 19h e é de graça. A gravação você recebe depois — mas o sorteio e o desconto acontecem só ao vivo.
+> É às 19h e é de graça. A gravação você recebe depois, mas o sorteio e o desconto acontecem só ao vivo.
 
 ## Pendências de conteúdo
 
