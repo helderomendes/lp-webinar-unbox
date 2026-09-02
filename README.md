@@ -98,19 +98,39 @@ A página traz:
 - **JSON-LD de FAQPage** com as 7 perguntas, elegível a rich result no Google
 - um único `<h1>`, `<h2>` por seção e `alt` em todas as imagens
 
-### 4. Dados pendentes (marcados em amarelo na página)
+### 4. Lâminas dos cases (antes e depois)
+
+Cada card de case mostra a captura do site dentro de um **mockup de laptop**: a lâmina rola
+sozinha de cima a baixo e um **slider** revela o depois por cima do antes. Arquivos esperados
+em `assets/`:
+
+| Arquivo | Case |
+|---|---|
+| `case-oddie-depois.jpg` | Oddie — só o depois (sem slider, a lâmina só rola) |
+| `case-pamela-antes.jpg` / `case-pamela-depois.jpg` | Pamela Concept |
+| `case-badia-antes.jpg` / `case-badia-depois.jpg` | Badia |
+
+**Como capturar:** página inteira (full page), largura de 1440px, JPEG ou WebP com qualidade
+alta. Antes e depois da mesma marca não precisam ter a mesma altura — cada camada percorre a
+própria sobra, então as duas chegam ao rodapé juntas.
+
+**Enquanto os arquivos não existem, o mockup se remove sozinho** e o card fica só com logo,
+categoria e texto. Nada de imagem quebrada no ar.
+
+Detalhes de comportamento: a rolagem pausa enquanto alguém arrasta o slider; o controle é um
+`input[type=range]` invisível, então funciona no teclado; páginas mais longas rolam mais devagar,
+para a leitura ficar parecida entre os cards; e com `prefers-reduced-motion` a lâmina fica parada
+no topo, com o slider ainda funcionando.
+
+### 5. Dados pendentes (marcados em amarelo na página)
 
 Os trechos com fundo amarelo tracejado (`.todo`) são placeholders de dados que ainda não existem.
 Eles são propositalmente visíveis para não irem ao ar por engano. Busque em `index.html` por `class="todo"`:
 
-1. `[X]%` — percentual do desconto (3 ocorrências)
-2. `[+X% de conversão]` / `[métrica real]` — um número por case
-3. `[N]` — quantas lojas o Bruno já subiu com IA (2 ocorrências)
+Falta a **confirmação da política de gravação** citada no FAQ e no CTA final, além das
+lâminas dos cases descritas acima.
 
-Faltam também os **prints antes/depois** dos cases (`assets/case-zetona.jpg`, `case-oddie.jpg`,
-`case-oto.jpg`) e a **confirmação da política de gravação** citada no FAQ.
-
-### 5. Medição (GTM / GA4)
+### 7. Medição (GTM / GA4)
 
 O loader da Revi está instalado no `<head>` com `defer`:
 
@@ -130,7 +150,7 @@ Dois eventos são emitidos:
 Os nomes ficam em `CONFIG.leadEvent` e `CONFIG.formStartEvent`. Todo o bloco roda dentro de
 `try/catch`: se o rastreamento falhar, a inscrição acontece do mesmo jeito.
 
-### 6. Links legais e pixels
+### 8. Links legais e pixels
 
 - Política de Privacidade: dois `href="#"` (formulário e rodapé).
 - Não há GTM/pixel instalado. Adicione antes do `</body>` conforme a stack de mídia.

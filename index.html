@@ -592,6 +592,92 @@ main,header,footer{position:relative;z-index:1}
 }
 .case .brand img{max-height:42px;width:auto;object-fit:contain}
 .case .brand--light{background:#fff;border-color:rgba(255,255,255,.3)}
+
+/* ---- Comparador antes/depois dentro de um laptop ---- */
+.shot{margin:0 0 16px}
+.laptop{width:100%}
+.laptop-tela{
+  position:relative;overflow:hidden;
+  aspect-ratio:16/10;
+  border-radius:10px 10px 3px 3px;
+  border:1px solid rgba(255,255,255,.22);
+  border-bottom:0;
+  background:#05070F;
+  box-shadow:0 18px 40px -20px rgba(0,0,0,.9), inset 0 0 0 3px #0A0E1C;
+  cursor:ew-resize;
+  touch-action:pan-y;            /* rolagem vertical da página continua livre */
+}
+/* base do laptop: trapézio simples */
+.laptop-base{
+  position:relative;height:10px;width:100%;
+  background:linear-gradient(180deg,#2A3350,#141A2E);
+  border-radius:0 0 10px 10px;
+  box-shadow:0 10px 22px -12px rgba(0,0,0,.9);
+}
+.laptop-base::after{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:16%;height:4px;border-radius:0 0 4px 4px;background:rgba(255,255,255,.16);
+}
+
+.shot-camada{position:absolute;inset:0;overflow:hidden}
+.shot-camada img{
+  position:absolute;top:0;left:0;width:100%;height:auto;display:block;
+  will-change:transform;
+}
+/* a lâmina sobe e desce sozinha; cada camada anda a própria altura,
+   então as duas chegam no rodapé ao mesmo tempo mesmo com páginas
+   de comprimentos diferentes */
+.shot-camada img{animation:rolarLamina var(--duracao,20s) ease-in-out infinite alternate}
+@keyframes rolarLamina{
+  from{transform:translateY(0)}
+  to{transform:translateY(var(--deslocamento,0px))}
+}
+.shot.is-pausado .shot-camada img{animation-play-state:paused}
+
+/* o "depois" é recortado a partir da posição do slider */
+.shot-depois{clip-path:inset(0 0 0 var(--pos,50%))}
+.shot--unico .shot-depois{clip-path:none}
+.shot--unico .laptop-tela{cursor:default}
+
+.shot-divisor{
+  position:absolute;top:0;bottom:0;left:var(--pos,50%);
+  width:2px;margin-left:-1px;z-index:3;pointer-events:none;
+  background:linear-gradient(180deg,#25F58A,#35C6FF,#A855F7);
+  box-shadow:0 0 12px rgba(53,198,255,.9);
+}
+.shot-divisor::after{
+  content:"";position:absolute;top:50%;left:50%;
+  width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;
+  background:#05070F;border:2px solid #35C6FF;
+  box-shadow:0 0 16px rgba(53,198,255,.75);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='10' viewBox='0 0 16 10' fill='none' stroke='%2335C6FF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5.5 1.5 2 5l3.5 3.5M10.5 1.5 14 5l-3.5 3.5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:center;
+}
+
+/* o controle de verdade é um range invisível: funciona no teclado também */
+.shot-range{
+  position:absolute;inset:0;z-index:4;width:100%;height:100%;
+  margin:0;padding:0;opacity:0;cursor:ew-resize;
+  -webkit-appearance:none;appearance:none;background:transparent;
+  touch-action:pan-y;
+}
+.shot-range::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:100%;cursor:ew-resize}
+.shot-range::-moz-range-thumb{width:44px;height:100%;border:0;background:transparent;cursor:ew-resize}
+.shot-range:focus-visible + .shot-divisor{outline:3px solid var(--green);outline-offset:2px}
+
+.shot-tag{
+  position:absolute;bottom:8px;z-index:3;pointer-events:none;
+  font-family:"Space Grotesk",sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 9px;border-radius:999px;
+  background:rgba(4,6,14,.82);border:1px solid rgba(255,255,255,.2);
+}
+.shot-tag--antes{left:8px;color:rgba(237,242,255,.8)}
+.shot-tag--depois{right:8px;color:#25F58A}
+
+@media(prefers-reduced-motion:reduce){
+  .shot-camada img{animation:none}
+}
 .case .brand .wordmark{
   font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:21px;
   letter-spacing:-.01em;color:var(--text);text-align:center;line-height:1.1;
@@ -1272,28 +1358,70 @@ body.js-reveal .reveal.is-in{
     </div>
 
     <div class="cases">
-      <!-- PENDENTE: trocar cada .todo pela métrica real e adicionar o print antes/depois
-           (assets/case-oddie.jpg, case-pamela.jpg, case-badia.jpg).
-           Logos de Pamela Concept e Badia ainda em wordmark — trocar por SVG quando chegar. -->
+      <!-- PENDENTE: as lâminas dos sites, em assets/:
+           case-oddie-depois.jpg · case-pamela-antes.jpg · case-pamela-depois.jpg
+           case-badia-antes.jpg · case-badia-depois.jpg
+           Sem os arquivos, o mockup se remove sozinho e o card fica só com o texto. -->
       <div class="case reveal">
         <div class="brand"><img src="assets/logo-oddie.webp" alt="Oddie Supply" loading="lazy"></div>
-        <span class="ba">Antes → Depois</span>
+        <div class="shot shot--unico" data-shot>
+          <div class="laptop">
+            <div class="laptop-tela">
+              <div class="shot-camada shot-depois">
+                <img src="assets/case-oddie-depois.jpg" alt="Loja da Oddie Supply feita com a Unbox" loading="lazy" decoding="async">
+              </div>
+              <span class="shot-tag shot-tag--depois">Depois</span>
+            </div>
+            <div class="laptop-base" aria-hidden="true"></div>
+          </div>
+        </div>
         <span class="cat">Alimentos funcionais</span>
-        <p class="metric"><span class="todo">[métrica real]</span> <span class="nb">depois da loja nova.</span></p>
         <p>Energia e hidratação em pó pra quem treina. Uma loja inteira construída em torno de um produto só.</p>
       </div>
       <div class="case reveal">
         <div class="brand"><img src="assets/logo-pamela.png" alt="Pamela Concept" loading="lazy"></div>
-        <span class="ba">Antes → Depois</span>
+        <div class="shot" data-shot>
+          <div class="laptop">
+            <div class="laptop-tela">
+              <div class="shot-camada shot-antes">
+                <img src="assets/case-pamela-antes.jpg" alt="Loja da Pamela Concept antes" loading="lazy" decoding="async">
+              </div>
+              <div class="shot-camada shot-depois">
+                <img src="assets/case-pamela-depois.jpg" alt="Loja da Pamela Concept depois" loading="lazy" decoding="async">
+              </div>
+              <input class="shot-range" type="range" min="0" max="100" value="50" step="0.1"
+                     aria-label="Comparar o antes e o depois da loja da Pamela Concept">
+              <span class="shot-divisor" aria-hidden="true"></span>
+              <span class="shot-tag shot-tag--antes">Antes</span>
+              <span class="shot-tag shot-tag--depois">Depois</span>
+            </div>
+            <div class="laptop-base" aria-hidden="true"></div>
+          </div>
+        </div>
         <span class="cat">Cuidado capilar</span>
-        <p class="metric"><span class="todo">[métrica real]</span> <span class="nb">depois da loja nova.</span></p>
         <p>Queda, caspa, crescimento, brilho, densidade, fios quebradiços. Cada problema virou um caminho claro dentro da loja, em vez de uma prateleira de frascos.</p>
       </div>
       <div class="case reveal">
         <div class="brand brand--light"><img src="assets/logo-badia.svg" alt="Badia" loading="lazy"></div>
-        <span class="ba">Antes → Depois</span>
+        <div class="shot" data-shot>
+          <div class="laptop">
+            <div class="laptop-tela">
+              <div class="shot-camada shot-antes">
+                <img src="assets/case-badia-antes.jpg" alt="Loja da Badia antes" loading="lazy" decoding="async">
+              </div>
+              <div class="shot-camada shot-depois">
+                <img src="assets/case-badia-depois.jpg" alt="Loja da Badia depois" loading="lazy" decoding="async">
+              </div>
+              <input class="shot-range" type="range" min="0" max="100" value="50" step="0.1"
+                     aria-label="Comparar o antes e o depois da loja da Badia">
+              <span class="shot-divisor" aria-hidden="true"></span>
+              <span class="shot-tag shot-tag--antes">Antes</span>
+              <span class="shot-tag shot-tag--depois">Depois</span>
+            </div>
+            <div class="laptop-base" aria-hidden="true"></div>
+          </div>
+        </div>
         <span class="cat">Temperos e especiarias</span>
-        <p class="metric"><span class="todo">[métrica real]</span> <span class="nb">depois da loja nova.</span></p>
         <p>Catálogo enorme de temperos. O desafio foi fazer centenas de SKUs virarem uma jornada simples de comprar.</p>
       </div>
     </div>
@@ -1736,6 +1864,73 @@ var CONFIG = {
   form.addEventListener('input', function (e) {
     var field = e.target.closest('.field');
     if (field && field.classList.contains('has-error')) field.classList.remove('has-error');
+  });
+
+  /* ---------- Comparador antes/depois dos cases ----------
+     Cada lâmina é uma captura de página inteira, muito mais alta que a
+     janela do laptop. A animação desloca cada imagem pela própria sobra,
+     então as duas terminam no rodapé juntas mesmo com páginas de alturas
+     diferentes. O slider recorta a camada de cima. */
+  document.querySelectorAll('[data-shot]').forEach(function (shot) {
+    var tela = shot.querySelector('.laptop-tela');
+    var imgs = shot.querySelectorAll('.shot-camada img');
+    var range = shot.querySelector('.shot-range');
+    var pendentes = imgs.length;
+    var falhou = false;
+
+    function medir() {
+      imgs.forEach(function (img) {
+        var sobra = img.offsetHeight - tela.offsetHeight;
+        img.style.setProperty('--deslocamento', (sobra > 0 ? -sobra : 0) + 'px');
+        // páginas mais longas rolam mais devagar, para a leitura ficar parecida
+        img.style.setProperty('--duracao', Math.min(34, Math.max(14, sobra / 40)) + 's');
+      });
+    }
+
+    // sem as lâminas o card volta ao formato de texto, sem imagem quebrada
+    function remover() {
+      if (falhou) return;
+      falhou = true;
+      shot.remove();
+    }
+
+    imgs.forEach(function (img) {
+      function pronto() {
+        if (--pendentes === 0 && !falhou) medir();
+      }
+      img.addEventListener('error', remover);
+      if (img.complete) { img.naturalWidth ? pronto() : remover(); }
+      else img.addEventListener('load', pronto);
+    });
+
+    if (!range) return;   // lâmina única: nada a comparar
+
+    function posicionar() {
+      tela.style.setProperty('--pos', range.value + '%');
+    }
+    range.addEventListener('input', posicionar);
+    posicionar();
+
+    // enquanto a pessoa compara, a lâmina para de rolar
+    ['pointerdown', 'focus'].forEach(function (ev) {
+      range.addEventListener(ev, function () { shot.classList.add('is-pausado'); });
+    });
+    ['pointerup', 'pointercancel', 'blur'].forEach(function (ev) {
+      range.addEventListener(ev, function () { shot.classList.remove('is-pausado'); });
+    });
+  });
+
+  var remedir;
+  window.addEventListener('resize', function () {
+    clearTimeout(remedir);
+    remedir = setTimeout(function () {
+      document.querySelectorAll('[data-shot] .shot-camada img').forEach(function (img) {
+        var tela = img.closest('.laptop-tela');
+        if (!tela || !img.offsetHeight) return;
+        var sobra = img.offsetHeight - tela.offsetHeight;
+        img.style.setProperty('--deslocamento', (sobra > 0 ? -sobra : 0) + 'px');
+      });
+    }, 250);
   });
 
   /* ---------- FAQ (accordion) ---------- */

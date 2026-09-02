@@ -111,10 +111,9 @@ Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, 
 
 | # | O que falta | Onde aparece |
 |---|---|---|
-| 1 | **Métrica de cada case** (Oddie, Pamela Concept, Badia) | seção de cases |
-| 2 | **Prints antes/depois** dos 3 cases | seção de cases |
-| 4 | **Confirmar a política de gravação** | FAQ e CTA final |
-| 5 | **Endpoint do formulário** (RD Station ou HubSpot) | `CONFIG.formEndpoint` |
+| 1 | **Lâminas dos sites** (`case-oddie-depois`, `case-pamela-antes/depois`, `case-badia-antes/depois`) | seção de cases |
+| 2 | **Confirmar a política de gravação** | FAQ e CTA final |
+
 
 Resolvidos: desconto de **30%**, **+80 lojas criadas com IA** (redação escolhida para não
 afirmar que todas estão no ar), logos dos três cases e foto do Bruno Romera em alta.
