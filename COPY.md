@@ -111,8 +111,7 @@ Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, 
 
 | # | O que falta | Onde aparece |
 |---|---|---|
-| 1 | **Lâminas dos sites** (`case-oddie-depois`, `case-pamela-antes/depois`, `case-badia-antes/depois`) | seção de cases |
-| 2 | **Confirmar a política de gravação** | FAQ e CTA final |
+| 1 | **Confirmar a política de gravação** | FAQ e CTA final |
 
 
 Resolvidos: desconto de **30%**, **+80 lojas criadas com IA** (redação escolhida para não

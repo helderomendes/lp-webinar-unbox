@@ -114,8 +114,8 @@ em `assets/`:
 alta. Antes e depois da mesma marca não precisam ter a mesma altura — cada camada percorre a
 própria sobra, então as duas chegam ao rodapé juntas.
 
-**Enquanto os arquivos não existem, o mockup se remove sozinho** e o card fica só com logo,
-categoria e texto. Nada de imagem quebrada no ar.
+As cinco lâminas já estão no repositório. **Se algum arquivo faltar, o mockup daquele card se
+remove sozinho** e ele fica só com logo, categoria e texto — nada de imagem quebrada no ar.
 
 Detalhes de comportamento: a rolagem pausa enquanto alguém arrasta o slider; o controle é um
 `input[type=range]` invisível, então funciona no teclado; páginas mais longas rolam mais devagar,
@@ -127,8 +127,7 @@ no topo, com o slider ainda funcionando.
 Os trechos com fundo amarelo tracejado (`.todo`) são placeholders de dados que ainda não existem.
 Eles são propositalmente visíveis para não irem ao ar por engano. Busque em `index.html` por `class="todo"`:
 
-Falta a **confirmação da política de gravação** citada no FAQ e no CTA final, além das
-lâminas dos cases descritas acima.
+Falta a **confirmação da política de gravação** citada no FAQ e no CTA final.
 
 ### 7. Medição (GTM / GA4)
 

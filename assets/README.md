@@ -17,13 +17,20 @@ A placa de cada logo segue o desenho da marca: Oddie e Pamela ficam sobre placa 
 claros), a Badia sobre placa branca, porque o logo dela tem elementos escuros e foi desenhado
 para fundo claro.
 | `og-cover.png` | preview em redes sociais (1200×630) | gerado a partir dos logos acima |
-| `case-pamela-antes.jpg` | lâmina da loja antiga (Shopify) | Drive · Revi Marketing/Webinar Unbox |
-| `case-pamela-depois.jpg` | lâmina da loja nova (Unbox) | Drive · Revi Marketing/Webinar Unbox |
+| `case-oddie-depois.jpg` | lâmina da loja nova da Oddie (400×1861) | Drive · Revi Marketing/Webinar Unbox |
+| `case-pamela-antes.jpg` | lâmina da loja antiga, Shopify (900×4408) | Drive · Revi Marketing/Webinar Unbox |
+| `case-pamela-depois.jpg` | lâmina da loja nova, Unbox (900×4408) | Drive · Revi Marketing/Webinar Unbox |
+| `case-badia-antes.jpg` | lâmina da loja antiga (400×919) | Drive · Revi Marketing/Webinar Unbox |
+| `case-badia-depois.jpg` | lâmina da loja nova (400×1055) | Drive · Revi Marketing/Webinar Unbox |
 
-As lâminas vão para o mockup dos cases. As originais vinham em 2940×14400 com ~1,6 MB cada;
-reduzi para 900px de largura em JPEG qualidade 82, o que dá ~420 KB por arquivo — o mockup
-exibe a uns 340px, então 900px já cobre tela retina com folga. **Faltam as da Oddie e da
-Badia** (`case-oddie-depois.jpg`, `case-badia-antes.jpg`, `case-badia-depois.jpg`).
+As cinco lâminas somam ~1,2 MB. As da Pamela vieram em 2940×14400 e foram reduzidas aqui para
+900px de largura em JPEG qualidade 82 (~420 KB cada). As da Oddie e da Badia já chegaram
+prontas em 400px de largura.
+
+**Sobre resolução:** o mockup exibe a lâmina a uns 340px de largura, então 900px cobre tela
+retina com folga e 400px fica no limite — nítido em tela comum, um pouco macio em retina. Se
+quiser trocar Oddie e Badia por versões maiores, 900px em JPEG qualidade 80 sai por volta de
+400 KB, que é tranquilo para a página.
 
 Para atualizar qualquer peça, substitua o arquivo mantendo o mesmo nome — a página aponta para
 estes caminhos e não precisa de ajuste.
