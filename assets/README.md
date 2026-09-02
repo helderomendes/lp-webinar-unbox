@@ -17,6 +17,13 @@ A placa de cada logo segue o desenho da marca: Oddie e Pamela ficam sobre placa 
 claros), a Badia sobre placa branca, porque o logo dela tem elementos escuros e foi desenhado
 para fundo claro.
 | `og-cover.png` | preview em redes sociais (1200×630) | gerado a partir dos logos acima |
+| `case-pamela-antes.jpg` | lâmina da loja antiga (Shopify) | Drive · Revi Marketing/Webinar Unbox |
+| `case-pamela-depois.jpg` | lâmina da loja nova (Unbox) | Drive · Revi Marketing/Webinar Unbox |
+
+As lâminas vão para o mockup dos cases. As originais vinham em 2940×14400 com ~1,6 MB cada;
+reduzi para 900px de largura em JPEG qualidade 82, o que dá ~420 KB por arquivo — o mockup
+exibe a uns 340px, então 900px já cobre tela retina com folga. **Faltam as da Oddie e da
+Badia** (`case-oddie-depois.jpg`, `case-badia-antes.jpg`, `case-badia-depois.jpg`).
 
 Para atualizar qualquer peça, substitua o arquivo mantendo o mesmo nome — a página aponta para
 estes caminhos e não precisa de ajuste.
