@@ -578,13 +578,7 @@ main,header,footer{position:relative;z-index:1}
   background:linear-gradient(160deg,rgba(47,107,255,.10),rgba(168,85,247,.06));
   text-align:center;
 }
-.case .name{font-family:"Space Grotesk",sans-serif;font-size:22px;font-weight:700;margin-bottom:8px}
-.case .ba{
-  display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--green);
-}
 .case p{color:var(--muted);font-size:14.5px;margin-top:12px}
-.case .metric{color:var(--text);font-size:15.5px;font-weight:600}
 .case .brand{
   height:66px;display:grid;place-items:center;margin-bottom:14px;
   padding:12px 16px;border-radius:14px;
@@ -642,6 +636,7 @@ main,header,footer{position:relative;z-index:1}
 
 /* o "depois" é recortado a partir da posição do slider */
 .shot-depois{clip-path:inset(0 0 0 var(--pos,50%))}
+/* modo de lâmina única: usado quando um case só tem o depois */
 .shot--unico .shot-depois{clip-path:none}
 .shot--unico .laptop-tela{cursor:default}
 
