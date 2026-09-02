@@ -627,10 +627,16 @@ main,header,footer{position:relative;z-index:1}
 /* a lâmina sobe e desce sozinha; cada camada anda a própria altura,
    então as duas chegam no rodapé ao mesmo tempo mesmo com páginas
    de comprimentos diferentes */
-.shot-camada img{animation:rolarLamina var(--duracao,20s) ease-in-out infinite alternate}
+.shot-camada img{animation:rolarLamina var(--duracao,20s) linear infinite}
+/* desce devagar até o rodapé, respira, e volta correndo para o topo,
+   como se a página fosse rolada de novo do começo */
 @keyframes rolarLamina{
-  from{transform:translateY(0)}
-  to{transform:translateY(var(--deslocamento,0px))}
+  0%   {transform:translateY(0)}
+  6%   {transform:translateY(0)}                        /* respira no topo */
+  86%  {transform:translateY(var(--deslocamento,0px))}  /* rolagem de leitura */
+  93%  {transform:translateY(var(--deslocamento,0px));
+        animation-timing-function:cubic-bezier(.7,0,.25,1)}   /* respira no rodapé */
+  100% {transform:translateY(0)}                        /* volta rápido */
 }
 .shot.is-pausado .shot-camada img{animation-play-state:paused}
 
@@ -1114,7 +1120,7 @@ body.js-reveal .reveal.is-in{
           </div>
         </div>
         <div class="hero-stat">
-          <span class="n">+80</span>
+          <span class="n">+100</span>
           <p>lojas criadas com IA pela Unbox — e mais uma vai nascer na sua frente no dia 8.</p>
         </div>
       </div>
@@ -1453,7 +1459,7 @@ body.js-reveal .reveal.is-in{
         </div>
 
         <p>
-          <b style="color:var(--text)">Bruno já criou mais de 80 lojas com IA</b>
+          <b style="color:var(--text)">Bruno já criou mais de 100 lojas com IA</b>
           — e não vai te mostrar slide nenhum. Ele abre a ferramenta, monta a loja na sua frente e
           responde o que você perguntar, na hora.
         </p>
@@ -1883,7 +1889,8 @@ var CONFIG = {
         var sobra = img.offsetHeight - tela.offsetHeight;
         img.style.setProperty('--deslocamento', (sobra > 0 ? -sobra : 0) + 'px');
         // páginas mais longas rolam mais devagar, para a leitura ficar parecida
-        img.style.setProperty('--duracao', Math.min(34, Math.max(14, sobra / 40)) + 's');
+        // 80% do ciclo é a rolagem de leitura; o resto são as pausas e a volta
+        img.style.setProperty('--duracao', Math.min(40, Math.max(16, sobra / 32)) + 's');
       });
     }
 

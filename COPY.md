@@ -71,7 +71,7 @@ Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, 
 
 **Bruno Pereira — Fundador da Unbox** · quem monta a loja ao vivo
 
-> **Bruno já criou mais de 80 lojas com IA** — e não vai te mostrar slide nenhum. Ele abre a
+> **Bruno já criou mais de 100 lojas com IA** — e não vai te mostrar slide nenhum. Ele abre a
 > ferramenta, monta a loja na sua frente e responde o que você perguntar, na hora.
 >
 > É o fundador da Unbox, a plataforma de AI Commerce que levanta uma loja totalmente personalizada
@@ -114,5 +114,5 @@ Cards: **Pronta na mesma tarde** · **Sua agenda de volta** · **Cara de marca, 
 | 1 | **Confirmar a política de gravação** | FAQ e CTA final |
 
 
-Resolvidos: desconto de **30%**, **+80 lojas criadas com IA** (redação escolhida para não
+Resolvidos: desconto de **30%**, **+100 lojas criadas com IA** (redação escolhida para não
 afirmar que todas estão no ar), logos dos três cases e foto do Bruno Romera em alta.
