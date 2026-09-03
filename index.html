@@ -1776,6 +1776,17 @@ var CONFIG = {
     }
   }
 
+  /* ---------- Evento padrão do Pixel da Meta ----------
+     Só dispara quando o lead foi realmente aceito pelo webhook.
+     Sem dados pessoais: o Pixel não precisa deles para otimizar. */
+  function metaTrack(nomeDoEvento, dados) {
+    try {
+      if (typeof window.fbq === 'function') window.fbq('track', nomeDoEvento, dados || {});
+    } catch (e) {
+      if (window.console && console.warn) console.warn('[meta] falhou:', e);
+    }
+  }
+
   /* ---------- Origem do tráfego: vai junto com o lead ---------- */
   function origem() {
     var q = new URLSearchParams(window.location.search);
@@ -1879,6 +1890,12 @@ var CONFIG = {
   });
 
   function concluir() {
+    metaTrack('Lead', {
+      content_name: 'Webinar AI Commerce',
+      content_category: 'webinar',
+      currency: 'BRL',
+      value: 0
+    });
     if (CONFIG.thankYouUrl) { window.location.href = CONFIG.thankYouUrl; return; }
     card.classList.add('is-done');
     success.classList.add('is-on');
